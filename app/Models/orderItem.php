@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
-class orderItem extends Model
+class OrderItem extends Model
 {
     public $timestamps = false;
 
@@ -44,6 +44,6 @@ class orderItem extends Model
     // Snapshot topping yang dipilih saat order 
     public function toppings(): HasMany
     {
-        return $this->hasMany(orderItemTopping::class);
+        return $this->hasMany(OrderItemTopping::class);
     }
 }

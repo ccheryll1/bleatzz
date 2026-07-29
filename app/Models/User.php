@@ -81,7 +81,7 @@ class User extends Authenticatable implements CanResetPasswordContract
     // Item di keranjang belanja 
     public function cartItems(): HasMany
     {
-        return $this->hasMany(cartItem::class);
+        return $this->hasMany(CartItem::class);
     }
 
     // Ulasan yang pernah ditulis

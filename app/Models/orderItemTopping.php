@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-class orderItemTopping extends Model
+class OrderItemTopping extends Model
 {
     public $timestamps = false;
 
@@ -27,7 +27,7 @@ class orderItemTopping extends Model
 
     public function orderItem(): BelongsTo
     {
-        return $this->belongsTo(orderItem::class);
+        return $this->belongsTo(OrderItem::class);
     }
 
     // Relasi ke topping asli (opsional, untuk referensi)

@@ -2,9 +2,11 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\Pivot;
 
-class menuTopping extends Model
+class MenuTopping extends Pivot
 {
-    //
+    public $timestamps = false;
+
+    protected $table = 'menu_toppings';
 }

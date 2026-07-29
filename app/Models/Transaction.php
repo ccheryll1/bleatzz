@@ -58,7 +58,7 @@ class Transaction extends Model
 
     public function orderItems(): HasMany
     {
-        return $this->hasMany(orderItem::class);
+        return $this->hasMany(OrderItem::class);
     }
 
     public function payment(): HasOne

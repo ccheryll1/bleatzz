@@ -2,18 +2,28 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
-class cartItem extends Model
+class CartItem extends Model
 {
+    use HasFactory;
+
     protected $fillable = [
         'user_id',
         'menu_id',
         'quantity',
         'notes',
     ];
+
+    protected function casts(): array
+    {
+        return [
+            'quantity' => 'integer',
+        ];
+    }
 
     // ─── Relations ───────────────────────────────────────────────────────────
 
@@ -27,19 +37,30 @@ class cartItem extends Model
         return $this->belongsTo(Menu::class);
     }
 
-    // Topping yang dipilih untuk item keranjang ini
     public function toppings(): BelongsToMany
     {
-        return $this->belongsToMany(Topping::class, 'cart_item_toppings');
+        return $this->belongsToMany(Topping::class, 'cart_item_toppings')
+            ->withTimestamps();
     }
 
-    // ─── Helpers ─────────────────────────────────────────────────────────────
+    // ─── Accessors ───────────────────────────────────────────────────────────
 
-    // Harga subtotal item ini termasuk topping
-    public function getSubtotalAttribute(): float
+    /**
+     * Subtotal = (harga menu + sum harga topping) x quantity
+     */
+    public function getSubtotalAttribute(): float|int
     {
-        $toppingTotal = $this->toppings->sum('price');
+        $menuPrice = (float) ($this->menu?->price ?? 0);
+        $toppingPrice = (float) $this->toppings->sum('price');
 
-        return ($this->menu->price + $toppingTotal) * $this->quantity;
+        return ($menuPrice + $toppingPrice) * (int) $this->quantity;
+    }
+
+    /**
+     * Total harga toppings untuk item ini (bisa dipakai untuk tampilan breakdown)
+     */
+    public function getToppingTotalAttribute(): float|int
+    {
+        return (float) $this->toppings->sum('price');
     }
 }
