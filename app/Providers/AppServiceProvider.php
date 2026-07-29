@@ -5,6 +5,7 @@ namespace App\Providers;
 use Illuminate\Auth\Middleware\RedirectIfAuthenticated;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Facades\URL;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -34,5 +35,9 @@ class AppServiceProvider extends ServiceProvider
         // Register Breeze layout components so <x-app-layout> and <x-guest-layout> still work
         Blade::component('breeze.layouts.app', 'app-layout');
         Blade::component('breeze.layouts.guest', 'guest-layout');
+
+        if (env('APP_ENV') === 'production') {
+        URL::forceScheme('https');
+    }
     }
 }
