@@ -1,0 +1,134 @@
+/* ═══════════════════════════════════════
+   REVIEW SECTION (Neobrutalist Dark)
+   ═══════════════════════════════════════ */
+
+.review {
+    width: 100%;
+    background-color: #000;
+    background-image: radial-gradient(circle, rgba(255, 255, 255, 0.06) 1px, transparent 1px);
+    background-size: 14px 14px;
+    padding: 4rem 2rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.review__inner {
+    max-width: 1280px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+}
+
+/* ─── Header ─── */
+.review__header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.review__header-left {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+}
+
+.review__intel {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 0.6rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--color-teal, #00C9A7);
+    display: block;
+}
+
+.review__title {
+    font-family: 'Arial Black', 'Arial', sans-serif;
+    font-size: clamp(1.5rem, 3vw, 2.2rem);
+    font-weight: 900;
+    color: var(--color-white);
+    text-transform: uppercase;
+    letter-spacing: -0.5px;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.review__title-line {
+    display: inline-block;
+    flex: 1;
+    min-width: 60px;
+    height: 3px;
+    background-color: var(--color-white);
+    opacity: 0.9;
+    align-self: center;
+}
+
+.review__view-all {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 0.6rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--color-teal, #00C9A7);
+    text-decoration: none;
+    white-space: nowrap;
+    flex-shrink: 0;
+    padding-bottom: 0.2rem;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.2s ease, color 0.2s ease;
+}
+
+.review__view-all:hover {
+    color: var(--color-teal-light, #3FFFD8);
+    border-bottom-color: var(--color-teal-light, #3FFFD8);
+}
+
+/* ─── Cards list ─── */
+.review__list {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    max-width: 1100px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+/* ─── Empty state ─── */
+.review__empty {
+    padding: 3rem 0;
+    text-align: center;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 0.75rem;
+    color: #555;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    border: 2px dashed #222;
+}
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 768px) {
+    .review {
+        padding: 3rem 1rem;
+    }
+
+    .review__list {
+        gap: 1.5rem;
+    }
+}
+
+@media (max-width: 580px) {
+    .review__title-line {
+        display: none;
+    }
+
+    .review__header {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 0.75rem;
+    }
+}

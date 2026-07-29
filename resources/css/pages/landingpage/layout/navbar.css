@@ -1,0 +1,395 @@
+/* ─── Navbar ─── */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    background-color: #ffffff;
+    border-bottom: 1px solid #e5e5e5;
+    height: 64px;
+    display: flex;
+    align-items: center;
+}
+
+.navbar__inner {
+    width: 100%;
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+/* Logo */
+.navbar__logo {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    flex-shrink: 0;
+}
+
+.navbar__logo-text {
+    font-size: 1rem;
+    font-weight: 900;
+    color: #111111;
+    letter-spacing: -0.5px;
+    text-transform: uppercase;
+    border: 2px solid #111111;
+    padding: 0.3rem 0.75rem;
+    border-radius: 4px;
+    background-color: #ffffff;
+    line-height: 1;
+}
+
+.navbar__logo-text span {
+    color: #111111;
+}
+
+/* Nav links */
+.navbar__links {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    flex: 1;
+}
+
+.navbar__links a {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #333333;
+    text-decoration: none;
+    letter-spacing: 0.3px;
+    padding: 0.5rem 0.75rem;
+    position: relative;
+    transition: color 0.2s ease;
+}
+
+.navbar__links a::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0.75rem;
+    right: 0.75rem;
+    height: 2px;
+    background-color: #00c9a7;
+    border-radius: 2px;
+    transform: scaleX(0);
+    transition: transform 0.2s ease;
+}
+
+.navbar__links a:hover {
+    color: #111111;
+}
+
+.navbar__links a:hover::after {
+    transform: scaleX(1);
+}
+
+.navbar__links a.active {
+    color: #111111;
+    font-weight: 600;
+}
+
+.navbar__links a.active::after {
+    transform: scaleX(1);
+}
+
+/* Actions */
+.navbar__actions {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    margin-left: auto;
+}
+
+.navbar__icon-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #444444;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    transition: color 0.2s ease, background-color 0.2s ease;
+    position: relative;
+    text-decoration: none;
+}
+
+.navbar__icon-btn:hover {
+    color: #111111;
+    background-color: #f5f5f5;
+}
+
+/* Neobrutalist Cart Badge */
+.navbar__cart-badge {
+    position: absolute;
+    top: 2px;
+    right: 0px;
+    min-width: 20px;
+    height: 20px;
+    padding: 0 4px;
+    background-color: var(--color-teal-light, #3FFFD8);
+    color: var(--color-black);
+    border: 2px solid var(--color-black);
+    box-shadow: 1.5px 1.5px 0 0 var(--color-black);
+    font-size: 0.65rem;
+    font-weight: 900;
+    font-family: "Courier New", monospace;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+    letter-spacing: 0;
+    border-radius: 0;
+    transform: translate(0, 0);
+    z-index: 2;
+    animation: cartBadgePop 0.25s ease-out;
+}
+
+@keyframes cartBadgePop {
+    0%   { transform: scale(0.6); opacity: 0; }
+    60%  { transform: scale(1.15); opacity: 1; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+.navbar__cart-btn.active {
+    color: #111111;
+    background-color: #f5f5f5;
+}
+
+/* Hide old text buttons — icon-only on desktop */
+.navbar__btn-login,
+.navbar__btn-register {
+    display: none;
+}
+
+/* Mobile toggle */
+.navbar__toggle {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #111111;
+    padding: 0.25rem;
+}
+
+/* Mobile drawer */
+.navbar__drawer {
+    display: none;
+    flex-direction: column;
+    position: fixed;
+    top: 64px;
+    left: 0;
+    right: 0;
+    background-color: #ffffff;
+    border-bottom: 1px solid #e5e5e5;
+    padding: 1.5rem 2rem;
+    gap: 1rem;
+    z-index: 999;
+}
+
+.navbar__drawer.open {
+    display: flex;
+}
+
+.navbar__drawer a {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #444444;
+    text-decoration: none;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid #eeeeee;
+    transition: color 0.2s ease;
+}
+
+.navbar__drawer a:hover {
+    color: #00c9a7;
+}
+
+.navbar__drawer-actions {
+    display: flex;
+    gap: 0.75rem;
+    margin-top: 0.5rem;
+}
+
+.navbar__drawer-actions .navbar__btn-login,
+.navbar__drawer-actions .navbar__btn-register {
+    display: inline-flex;
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 0.45rem 1.1rem;
+    border-radius: 4px;
+    text-decoration: none;
+    cursor: pointer;
+    border: 1px solid #444;
+    color: #111111;
+    background: none;
+    transition: border-color 0.2s ease, color 0.2s ease;
+}
+
+.navbar__drawer-actions .navbar__btn-register {
+    color: #ffffff;
+    background-color: #00c9a7;
+    border-color: #00c9a7;
+}
+
+/* ─── Profile Dropdown ─── */
+.navbar__profile {
+    position: relative;
+    display: inline-flex;
+}
+
+.navbar__profile-trigger {
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+    height: 38px;
+    padding: 2px 8px 2px 2px;
+    background: #fff;
+    border: 2px solid #000;
+    box-shadow: 2.5px 2.5px 0 #000;
+    cursor: pointer;
+    color: inherit;
+    transition: transform 0.1s ease, box-shadow 0.1s ease;
+    font-family: inherit;
+}
+
+.navbar__profile-trigger:hover {
+    background: #f5f5f5;
+}
+
+.navbar__profile-trigger:active,
+.navbar__profile.is-open .navbar__profile-trigger {
+    transform: translate(2.5px, 2.5px);
+    box-shadow: 0 0 0 #000;
+}
+
+.navbar__profile-avatar {
+    width: 30px;
+    height: 30px;
+    background: var(--color-teal, #00c9a7);
+    color: #000;
+    border: 2px solid #000;
+    font-weight: 900;
+    font-size: 0.85rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "Courier New", monospace;
+}
+
+.navbar__profile-menu {
+    position: absolute;
+    top: calc(100% + 10px);
+    right: 0;
+    min-width: 240px;
+    background: #fff;
+    border: 3px solid #000;
+    box-shadow: 5px 5px 0 #000;
+    z-index: 1001;
+    padding: 0;
+    display: none;
+    flex-direction: column;
+}
+
+.navbar__profile.is-open .navbar__profile-menu {
+    display: flex;
+}
+
+.navbar__profile-header {
+    padding: 0.9rem 1rem 0.8rem;
+    border-bottom: 3px solid #000;
+    background: #fffacd;
+}
+
+.navbar__profile-name {
+    font-weight: 900;
+    font-size: 0.95rem;
+    color: #000;
+    letter-spacing: -0.2px;
+    line-height: 1.2;
+    word-break: break-word;
+}
+
+.navbar__profile-email {
+    font-size: 0.75rem;
+    color: #666;
+    margin-top: 3px;
+    font-family: "Courier New", monospace;
+}
+
+.navbar__profile-role {
+    display: inline-block;
+    margin-top: 8px;
+    padding: 2px 8px;
+    background: #000;
+    color: #fff;
+    font-size: 0.65rem;
+    font-weight: 900;
+    letter-spacing: 1.2px;
+    font-family: "Courier New", monospace;
+}
+
+.navbar__profile-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.7rem 1rem;
+    background: #fff;
+    border: none;
+    border-bottom: 2px solid #eee;
+    color: #111;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+    width: 100%;
+    text-align: left;
+    font-family: inherit;
+    transition: background 0.1s ease, transform 0.1s ease;
+}
+
+.navbar__profile-item:last-child {
+    border-bottom: none;
+}
+
+.navbar__profile-item:hover {
+    background: #f5fff9;
+    padding-left: 1.15rem;
+}
+
+.navbar__profile-item--danger {
+    color: #c0392b;
+    background: #fff8f7;
+}
+
+.navbar__profile-item--danger:hover {
+    background: #ffecea;
+}
+
+.navbar__profile-divider {
+    height: 3px;
+    background: #000;
+    margin: 0;
+}
+
+@media (max-width: 768px) {
+    .navbar__links,
+    .navbar__actions {
+        display: none;
+    }
+
+    .navbar__toggle {
+        display: flex;
+    }
+}

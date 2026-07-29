@@ -1,0 +1,408 @@
+/* ============================================================
+   login.css — Halaman Log-In | Bleatz
+   ============================================================ */
+
+/* color.css sudah di-import lewat app.css */
+
+/* ─── Layout wrapper: 2 kolom ─── */
+.login-wrapper {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* Panel kiri login pakai class .panel-left dari register.css — tidak perlu didefinisikan ulang */
+
+/* ═══════════════════════════════════════════
+   PANEL KANAN  (abu sangat muda, form)
+═══════════════════════════════════════════ */
+.login-panel-right {
+    width: 58%;
+    background-color: #F0F0F0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 52px;
+    overflow-y: auto;
+}
+
+/* Kartu form — putih dengan border */
+.login-form-card {
+    width: 100%;
+    max-width: 420px;
+    background-color: var(--color-white);
+    border: 1.5px solid var(--color-gray-300);
+    padding: 36px 36px 28px;
+}
+
+/* ─── Header form ─── */
+.login-form-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-bottom: 4px;
+}
+
+.login-heading {
+    font-family: 'Barlow Condensed', 'Inter', sans-serif;
+    font-size: 2.4rem;
+    font-weight: 700;
+    color: var(--color-black);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    line-height: 1;
+}
+
+/* Ikon fingerprint di pojok kanan heading */
+.login-fingerprint {
+    color: var(--color-gray-300);
+    flex-shrink: 0;
+    margin-top: 4px;
+}
+
+/* Badge KLASIFIKASI: RAHASIA */
+.login-classified {
+    display: inline-block;
+    background-color: var(--color-teal);
+    color: var(--color-white);
+    font-size: 0.6rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    padding: 4px 10px;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+}
+
+/* Garis separator di bawah heading */
+.login-divider {
+    border: none;
+    border-top: 1.5px solid var(--color-gray-300);
+    margin: 12px 0 24px;
+}
+
+/* ─── Form fields ─── */
+.login-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.login-form-group {
+    margin-bottom: 16px;
+}
+
+.login-label {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    color: var(--color-gray-600);
+    margin-bottom: 7px;
+    text-transform: uppercase;
+}
+
+.login-label svg {
+    color: var(--color-gray-400);
+}
+
+.login-input {
+    width: 100%;
+    padding: 11px 44px 11px 14px;
+    background-color: var(--color-white);
+    border: 1.5px solid var(--color-gray-300);
+    border-radius: 0;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.82rem;
+    font-weight: 400;
+    color: var(--color-input-text);
+    letter-spacing: 0.03em;
+    outline: none;
+    transition: border-color 0.2s ease, background-color 0.2s ease;
+}
+
+.login-input::placeholder {
+    color: var(--color-gray-300);
+    font-style: italic;
+    font-weight: 400;
+}
+
+.login-input:focus {
+    border-color: var(--color-black);
+    background-color: var(--color-white);
+}
+
+.login-input.is-error {
+    border-color: var(--color-error);
+}
+
+/* Input wrapper (untuk icon kanan) */
+.login-input-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.login-input-icon {
+    position: absolute;
+    right: 13px;
+    color: var(--color-gray-400);
+    display: flex;
+    align-items: center;
+    pointer-events: none;
+}
+
+.login-input-icon--btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    pointer-events: auto;
+    padding: 0;
+    line-height: 1;
+    transition: color 0.2s ease;
+}
+
+.login-input-icon--btn:hover {
+    color: var(--color-black);
+}
+
+/* Error message */
+.login-error-msg {
+    font-size: 0.72rem;
+    color: var(--color-error);
+    margin-top: 4px;
+}
+
+/* ─── Row: Remember Me + Lupa Kode ─── */
+.login-meta-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+/* Checkbox "Ingat Agen" */
+.login-remember {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+}
+
+.login-remember__input {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.login-remember__box {
+    flex-shrink: 0;
+    width: 16px;
+    height: 16px;
+    border: 2px solid var(--color-black);
+    background-color: var(--color-white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.2s ease;
+}
+
+.login-remember__input:checked + .login-remember__box {
+    background-color: var(--color-black);
+}
+
+.login-remember__input:checked + .login-remember__box::after {
+    content: '';
+    display: block;
+    width: 4px;
+    height: 8px;
+    border: 2px solid var(--color-white);
+    border-top: none;
+    border-left: none;
+    transform: rotate(45deg) translateY(-1px);
+}
+
+.login-remember__text {
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-black);
+}
+
+/* Link lupa kode */
+.login-forgot {
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-black);
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.login-forgot:hover {
+    color: var(--color-teal);
+}
+
+/* ─── Submit button ─── */
+.login-btn-submit {
+    width: 100%;
+    padding: 14px 24px;
+    background-color: var(--color-black);
+    color: var(--color-white);
+    border: 2px solid var(--color-black);
+    font-family: 'Barlow Condensed', 'Inter', sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    transition:
+        background-color 0.2s ease,
+        color 0.2s ease,
+        border-color 0.2s ease;
+    outline: none;
+    margin-bottom: 20px;
+}
+
+/* ★ Hover: teal muda (aquamarine), teks hitam — sesuai referensi */
+.login-btn-submit:hover {
+    background-color: var(--color-teal);      /* #00C9A7 */
+    color: var(--color-black);
+    border-color: var(--color-teal);
+}
+
+.login-btn-submit:active {
+    background-color: var(--color-teal-dark);
+    border-color: var(--color-teal-dark);
+    color: var(--color-white);
+}
+
+/* Ikon panah di tombol */
+.login-btn-submit svg {
+    transition: transform 0.2s ease;
+}
+
+.login-btn-submit:hover svg {
+    transform: translateX(4px);
+}
+
+/* ─── Separator dashed ─── */
+.login-separator {
+    border: none;
+    border-top: 1.5px dashed var(--color-gray-300);
+    margin: 0 0 16px;
+}
+
+/* ─── Bagian bawah: daftar ─── */
+.login-register-section {
+    text-align: center;
+}
+
+.login-register-section__text {
+    font-size: 0.78rem;
+    color: var(--color-text-secondary);
+    margin-bottom: 10px;
+}
+
+/* Tombol BUAT IDENTITAS BARU */
+.login-btn-register {
+    display: inline-block;
+    padding: 10px 24px;
+    background-color: var(--color-black);
+    color: var(--color-white);
+    border: 2px solid var(--color-black);
+    font-family: 'Barlow Condensed', 'Inter', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition:
+        background-color 0.2s ease,
+        color 0.2s ease;
+}
+
+.login-btn-register:hover {
+    background-color: var(--color-teal);
+    border-color: var(--color-teal);
+    color: var(--color-black);
+}
+
+/* ═══════════════════════════════════════════
+   RESPONSIVE
+═══════════════════════════════════════════ */
+
+/* Desktop: kunci 1 layar */
+@media (min-width: 769px) and (min-height: 580px) {
+    .login-wrapper {
+        height: 100vh;
+        overflow: hidden;
+    }
+
+    .login-panel-right {
+        overflow-y: auto;
+    }
+}
+
+/* Tablet landscape ≤ 1024px */
+@media (max-width: 1024px) {
+    .login-panel-right {
+        width: 62%;
+        padding: 32px 36px;
+    }
+}
+
+/* Tablet portrait ≤ 768px: 1 kolom */
+@media (max-width: 768px) {
+    .login-wrapper {
+        flex-direction: column;
+        min-height: 100vh;
+        height: auto;
+        overflow: visible;
+    }
+
+    .login-panel-right {
+        width: 100%;
+        padding: 36px 28px 48px;
+    }
+
+    .login-form-card {
+        max-width: 100%;
+    }
+}
+
+/* Mobile ≤ 480px */
+@media (max-width: 480px) {
+    .login-panel-right {
+        padding: 28px 16px 40px;
+    }
+
+    .login-form-card {
+        padding: 24px 20px 20px;
+    }
+
+    .login-heading {
+        font-size: 2rem;
+    }
+
+    .login-input {
+        padding: 10px 40px 10px 12px;
+        font-size: 0.78rem;
+    }
+
+    .login-btn-submit {
+        padding: 12px 20px;
+        font-size: 0.95rem;
+    }
+
+    .login-meta-row {
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+}

@@ -1,0 +1,537 @@
+/* ─── Modal Cart — Neobrutalist Style ─── */
+
+/* ─── Overlay ─────────────────────────────────────────────────────── */
+.cart-modal-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    background-color: rgba(30, 41, 59, 0.65);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    animation: cart-modal-fade-in 0.2s ease-out;
+}
+
+.cart-modal-overlay[x-cloak] {
+    display: none !important;
+}
+
+/* ─── Transitions (fade + pop) ───────────────────────────────────── */
+.cart-modal-fade-enter,
+.cart-modal-fade-leave {
+    transition: opacity 0.2s ease-out;
+}
+.cart-modal-fade-enter-start,
+.cart-modal-fade-leave-end {
+    opacity: 0;
+}
+.cart-modal-fade-enter-end,
+.cart-modal-fade-leave-start {
+    opacity: 1;
+}
+
+.cart-modal-pop-enter,
+.cart-modal-pop-leave {
+    transition: transform 0.22s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.18s ease-out;
+}
+.cart-modal-pop-enter-start,
+.cart-modal-pop-leave-end {
+    opacity: 0;
+    transform: translateY(12px) scale(0.96);
+}
+.cart-modal-pop-enter-end,
+.cart-modal-pop-leave-start {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+
+@keyframes cart-modal-fade-in {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+/* ─── Modal Container ─────────────────────────────────────────────── */
+.cart-modal {
+    width: 100%;
+    max-width: 900px;
+    max-height: calc(100vh - 2rem);
+    background-color: var(--color-white);
+    background-image: radial-gradient(circle, rgba(0, 0, 0, 0.05) 1px, transparent 1px);
+    background-size: 10px 10px;
+    border: 3px solid var(--color-black);
+    box-shadow: 8px 8px 0 0 var(--color-black);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    overflow: hidden;
+}
+
+/* ─── Left: Photo Column ──────────────────────────────────────────── */
+.cart-modal__photo-col {
+    background-color: #F0F4F8;
+    background-image: radial-gradient(circle, rgba(0, 0, 0, 0.05) 1px, transparent 1px);
+    background-size: 8px 8px;
+    padding: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-right: 3px solid var(--color-black);
+}
+
+.cart-modal__photo-frame {
+    width: 100%;
+    aspect-ratio: 4 / 5;
+    background-color: var(--color-black);
+    border: 2.5px solid var(--color-black);
+    box-shadow: 5px 5px 0 0 rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+}
+
+.cart-modal__photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    background-color: #fff;
+}
+
+.cart-modal__photo--placeholder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #111;
+    color: #555;
+}
+
+.cart-modal__photo--placeholder svg {
+    width: 4rem;
+    height: 4rem;
+}
+
+/* ─── Right: Detail Column ────────────────────────────────────────── */
+.cart-modal__detail-col {
+    display: flex;
+    flex-direction: column;
+    max-height: calc(100vh - 2rem);
+    overflow-y: auto;
+    background-color: var(--color-white);
+}
+
+.cart-modal__detail-col::-webkit-scrollbar {
+    width: 8px;
+}
+.cart-modal__detail-col::-webkit-scrollbar-track {
+    background: #F0F4F8;
+}
+.cart-modal__detail-col::-webkit-scrollbar-thumb {
+    background: var(--color-black);
+    border: 1px solid var(--color-black);
+}
+
+.cart-modal__form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+/* ─── Sections ────────────────────────────────────────────────────── */
+.cart-modal__section {
+    padding: 1.25rem 1.5rem;
+    border-bottom: 2.5px solid var(--color-black);
+    position: relative;
+}
+
+.cart-modal__section:last-child {
+    border-bottom: none;
+}
+
+/* ─── Header Section ──────────────────────────────────────────────── */
+.cart-modal__header {
+    background-image: radial-gradient(circle, rgba(0, 0, 0, 0.04) 1px, transparent 1px);
+    background-size: 8px 8px;
+    padding-top: 1.1rem;
+    padding-bottom: 1.2rem;
+}
+
+.cart-modal__close-btn {
+    position: absolute;
+    top: 0.9rem;
+    right: 0.9rem;
+    width: 2.25rem;
+    height: 2.25rem;
+    background-color: var(--color-white);
+    border: 2.5px solid var(--color-black);
+    box-shadow: 3px 3px 0 0 var(--color-black);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: transform 0.1s ease, box-shadow 0.1s ease, background-color 0.15s ease;
+    padding: 0;
+    z-index: 5;
+}
+
+.cart-modal__close-btn:hover {
+    background-color: #FFF0F0;
+}
+
+.cart-modal__close-btn:active {
+    transform: translate(2px, 2px);
+    box-shadow: 1px 1px 0 0 var(--color-black);
+}
+
+.cart-modal__close-btn svg {
+    width: 1rem;
+    height: 1rem;
+    stroke: var(--color-black);
+    stroke-width: 3;
+    fill: none;
+}
+
+.cart-modal__canteen-label {
+    display: inline-block;
+    font-size: 0.65rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    color: var(--color-gray-600);
+    font-family: "Courier New", monospace;
+    margin-bottom: 0.5rem;
+}
+
+.cart-modal__title {
+    font-size: 1.65rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+    color: var(--color-black);
+    line-height: 1.1;
+    margin-bottom: 0.6rem;
+    padding-right: 3rem;
+}
+
+.cart-modal__desc {
+    font-size: 0.85rem;
+    line-height: 1.55;
+    color: var(--color-gray-800);
+    font-weight: 500;
+}
+
+/* ─── Section Titles ──────────────────────────────────────────────── */
+.cart-modal__section-title {
+    font-size: 0.7rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1.6px;
+    color: var(--color-black);
+    font-family: "Courier New", monospace;
+    margin-bottom: 0.85rem;
+    line-height: 1;
+}
+
+.cart-modal__section-title--accent {
+    color: #00A78B;
+}
+
+/* ─── Toppings Section ────────────────────────────────────────────── */
+.cart-modal__toppings {
+    background-color: #F5F8FB;
+}
+
+.cart-modal__topping-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+}
+
+.cart-modal__topping-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    padding: 0.4rem 0;
+}
+
+.cart-modal__topping-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.1rem;
+    flex: 1;
+}
+
+.cart-modal__topping-name {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--color-black);
+}
+
+.cart-modal__topping-price {
+    font-size: 0.68rem;
+    font-weight: 600;
+    color: var(--color-gray-700);
+    font-family: "Courier New", monospace;
+}
+
+/* ─── Notes Section ───────────────────────────────────────────────── */
+.cart-modal__notes {
+    background-color: var(--color-white);
+}
+
+.cart-modal__textarea {
+    width: 100%;
+    padding: 0.75rem 0.9rem;
+    font-size: 0.8rem;
+    font-family: inherit;
+    line-height: 1.5;
+    color: var(--color-black);
+    background-color: var(--color-white);
+    border: 2.5px solid var(--color-black);
+    box-shadow: 3px 3px 0 0 rgba(0, 0, 0, 0.25);
+    resize: vertical;
+    min-height: 90px;
+    transition: box-shadow 0.12s ease, transform 0.12s ease;
+}
+
+.cart-modal__textarea::placeholder {
+    color: var(--color-gray-500);
+    font-style: italic;
+}
+
+.cart-modal__textarea:focus {
+    outline: none;
+    box-shadow: 4px 4px 0 0 var(--color-black);
+    transform: translate(-1px, -1px);
+}
+
+/* ─── Quantity Section ────────────────────────────────────────────── */
+.cart-modal__qty {
+    background-image: radial-gradient(circle, rgba(0, 0, 0, 0.04) 1px, transparent 1px);
+    background-size: 8px 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.cart-modal__qty-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.cart-modal__qty-label {
+    font-size: 0.7rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1.8px;
+    color: var(--color-black);
+    font-family: "Courier New", monospace;
+}
+
+.cart-modal__total-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding-top: 0.85rem;
+    padding-bottom: 0.15rem;
+    border-top: 2px dashed rgba(0, 0, 0, 0.2);
+}
+
+.cart-modal__total-label {
+    font-size: 0.75rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1.6px;
+    color: var(--color-black);
+    font-family: "Courier New", monospace;
+}
+
+.cart-modal__total-price {
+    font-size: 1.15rem;
+    font-weight: 900;
+    color: var(--color-black);
+    font-family: "Courier New", monospace;
+    letter-spacing: 1px;
+}
+
+/* ─── Quantity / Topping Stepper ──────────────────────────────────── */
+.cart-modal__stepper {
+    display: inline-flex;
+    align-items: stretch;
+    border: 2.5px solid var(--color-black);
+    box-shadow: 3px 3px 0 0 var(--color-black);
+    background-color: var(--color-white);
+    transition: transform 0.1s ease, box-shadow 0.1s ease;
+}
+
+.cart-modal__stepper--lg {
+    box-shadow: 3.5px 3.5px 0 0 var(--color-black);
+}
+
+.cart-modal__stepper-btn {
+    width: 2.2rem;
+    height: 2.2rem;
+    background-color: var(--color-white);
+    border: none;
+    border-right: 2px solid var(--color-black);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    transition: background-color 0.12s ease;
+    flex-shrink: 0;
+}
+
+.cart-modal__stepper-btn:last-of-type {
+    border-right: none;
+    border-left: 2px solid var(--color-black);
+}
+
+.cart-modal__stepper-btn:hover {
+    background-color: #E8F9F4;
+}
+
+.cart-modal__stepper-btn:active {
+    background-color: #D0F3E8;
+}
+
+.cart-modal__stepper-btn svg {
+    width: 0.95rem;
+    height: 0.95rem;
+    stroke: var(--color-black);
+    stroke-width: 2.8;
+    fill: none;
+}
+
+.cart-modal__stepper--lg .cart-modal__stepper-btn {
+    width: 2.7rem;
+    height: 2.7rem;
+}
+
+.cart-modal__stepper--lg .cart-modal__stepper-btn svg {
+    width: 1.1rem;
+    height: 1.1rem;
+    stroke-width: 3;
+}
+
+.cart-modal__stepper-value {
+    min-width: 2.5rem;
+    padding: 0 0.5rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.95rem;
+    font-weight: 800;
+    color: var(--color-black);
+    font-family: "Courier New", monospace;
+    background-color: var(--color-white);
+    text-align: center;
+}
+
+.cart-modal__stepper--lg .cart-modal__stepper-value {
+    min-width: 3.2rem;
+    font-size: 1.25rem;
+    padding: 0 0.65rem;
+}
+
+/* ─── CTA / Submit Section ────────────────────────────────────────── */
+.cart-modal__cta {
+    background-color: var(--color-white);
+    padding-top: 1rem;
+    padding-bottom: 1.5rem;
+}
+
+.cart-modal__submit-btn {
+    width: 100%;
+    padding: 0.9rem 1rem;
+    font-size: 0.78rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 1.6px;
+    color: var(--color-black);
+    background-color: var(--color-teal-light, #3FFFD8);
+    border: 3px solid var(--color-black);
+    box-shadow: 4.5px 4.5px 0 0 var(--color-black);
+    cursor: pointer;
+    transition: transform 0.1s ease, box-shadow 0.1s ease, background-color 0.15s ease;
+    font-family: "Courier New", monospace;
+    display: block;
+    text-align: center;
+}
+
+.cart-modal__submit-btn:hover {
+    background-color: var(--color-teal, #00C9A7);
+}
+
+.cart-modal__submit-btn:active {
+    transform: translate(3px, 3px);
+    box-shadow: 1.5px 1.5px 0 0 var(--color-black);
+}
+
+/* ─── Responsive Breakpoints ──────────────────────────────────────── */
+@media (max-width: 768px) {
+    .cart-modal {
+        grid-template-columns: 1fr;
+        max-height: calc(100vh - 1.5rem);
+    }
+
+    .cart-modal__photo-col {
+        border-right: none;
+        border-bottom: 3px solid var(--color-black);
+        padding: 1rem;
+        max-height: 260px;
+    }
+
+    .cart-modal__photo-frame {
+        aspect-ratio: 16 / 10;
+        max-width: 360px;
+    }
+
+    .cart-modal__detail-col {
+        max-height: calc(100vh - 1.5rem - 260px - 6px);
+    }
+
+    .cart-modal__section {
+        padding: 1rem 1.1rem;
+    }
+
+    .cart-modal__title {
+        font-size: 1.35rem;
+        padding-right: 2.8rem;
+    }
+
+    .cart-modal__submit-btn {
+        font-size: 0.72rem;
+        padding: 0.85rem 0.9rem;
+        letter-spacing: 1.2px;
+    }
+}
+
+@media (max-width: 480px) {
+    .cart-modal-overlay {
+        padding: 0.5rem;
+    }
+
+    .cart-modal {
+        box-shadow: 6px 6px 0 0 var(--color-black);
+    }
+
+    .cart-modal__qty-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+    }
+
+    .cart-modal__total-row {
+        flex-direction: row;
+    }
+
+    .cart-modal__topping-item {
+        flex-wrap: wrap;
+    }
+}

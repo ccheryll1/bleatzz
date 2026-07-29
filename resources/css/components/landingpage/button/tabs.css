@@ -1,0 +1,86 @@
+/* ═══════════════════════════════════════
+   TABS GROUP (Reusable)
+   ═══════════════════════════════════════ */
+
+.tabs-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+.tabs-group__btn {
+    font-family: 'Arial Black', 'Arial', sans-serif;
+    font-size: 0.72rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+    color: var(--color-black);
+    background-color: var(--color-white);
+    border: 3px solid var(--color-black);
+    box-shadow: 4px 4px 0 0 var(--color-black);
+    padding: 0 1.1rem;
+    height: 44px;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.1s ease, box-shadow 0.1s ease, background-color 0.15s ease, color 0.15s ease;
+    user-select: none;
+    line-height: 1;
+    white-space: nowrap;
+}
+
+.tabs-group__btn:hover {
+    transform: translate(-1px, -1px);
+    box-shadow: 5px 5px 0 0 var(--color-black);
+    background-color: var(--color-gray-100);
+}
+
+.tabs-group__btn:active {
+    transform: translate(2px, 2px);
+    box-shadow: 1.5px 1.5px 0 0 var(--color-black);
+}
+
+/* Active state: Cyan background */
+.tabs-group__btn--active {
+    background-color: var(--color-teal-light);
+    color: var(--color-black);
+    border-color: var(--color-black);
+}
+
+.tabs-group__btn--active:hover {
+    background-color: var(--color-teal);
+}
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 768px) {
+    .tabs-group {
+        gap: 0.4rem;
+    }
+
+    .tabs-group__btn {
+        font-size: 0.65rem;
+        padding: 0 0.85rem;
+        height: 40px;
+        box-shadow: 3px 3px 0 0 var(--color-black);
+        letter-spacing: 0.2px;
+    }
+
+    .tabs-group__btn:hover {
+        box-shadow: 4px 4px 0 0 var(--color-black);
+    }
+}
+
+@media (max-width: 480px) {
+    .tabs-group {
+        gap: 0.35rem;
+    }
+
+    .tabs-group__btn {
+        font-size: 0.58rem;
+        padding: 0 0.7rem;
+        height: 38px;
+    }
+}

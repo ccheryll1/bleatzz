@@ -1,0 +1,714 @@
+/* ═══════════════════════════════════════
+   CARD CART — Item Keranjang (Neobrutalist) — COMPACT
+   ═══════════════════════════════════════ */
+
+.card-cart {
+    position: relative;
+    background-color: var(--color-white);
+    background-image: radial-gradient(circle, rgba(0, 0, 0, 0.04) 1px, transparent 1px);
+    background-size: 10px 10px;
+    border: 2.5px solid var(--color-black);
+    box-shadow: 5px 5px 0 0 var(--color-black);
+    display: grid;
+    grid-template-columns: auto auto 1fr;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1rem 1rem 0.85rem;
+    overflow: hidden;
+    transition: transform 0.12s ease, box-shadow 0.12s ease;
+}
+
+.card-cart:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 7px 7px 0 0 var(--color-black);
+}
+
+/* ─── Right edge dotted accent strip ─── */
+.card-cart__right-strip {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 40px;
+    height: 100%;
+    background-image: radial-gradient(circle, rgba(0, 0, 0, 0.12) 1px, transparent 1px);
+    background-size: 7px 7px;
+    pointer-events: none;
+    border-left: 0;
+    z-index: 1;
+}
+
+/* ─── Checkmark button (Left side) ─── */
+.card-cart__check-wrap {
+    position: relative;
+    z-index: 2;
+    align-self: flex-start;
+    padding-top: 2.75rem;
+}
+
+.card-cart__check-btn {
+    width: 2rem;
+    height: 2rem;
+    background-color: var(--color-white);
+    border: 2px solid var(--color-black);
+    box-shadow: 2.5px 2.5px 0 0 var(--color-black);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    padding: 0;
+    transition: transform 0.1s ease, box-shadow 0.1s ease, background-color 0.15s ease;
+}
+
+.card-cart__check-btn:hover {
+    background-color: #F0F0F0;
+}
+
+.card-cart__check-btn:active {
+    transform: translate(2px, 2px);
+    box-shadow: 0.5px 0.5px 0 0 var(--color-black);
+}
+
+.card-cart__check-btn svg {
+    width: 0.95rem;
+    height: 0.95rem;
+    stroke: var(--color-white);
+    stroke-width: 3;
+    fill: none;
+    opacity: 0;
+    transition: opacity 0.12s ease, stroke 0.12s ease;
+}
+
+.card-cart__check-btn.is-checked {
+    background-color: var(--color-black);
+}
+
+.card-cart__check-btn.is-checked svg {
+    opacity: 1;
+    stroke: var(--color-white);
+}
+
+.card-cart__check-btn:not(.is-checked):hover svg {
+    opacity: 0.25;
+    stroke: var(--color-black);
+}
+
+/* ─── Photo area ─── */
+.card-cart__photo-wrap {
+    position: relative;
+    z-index: 2;
+    align-self: stretch;
+    display: flex;
+    align-items: center;
+}
+
+.card-cart__photo-frame {
+    width: 130px;
+    aspect-ratio: 1 / 1;
+    background-color: var(--color-black);
+    border: 2px solid var(--color-black);
+    box-shadow: 3px 3px 0 0 var(--color-black);
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+.card-cart__photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.card-cart__photo--placeholder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #111;
+    color: #444;
+}
+
+.card-cart__photo--placeholder svg {
+    width: 2.25rem;
+    height: 2.25rem;
+}
+
+/* ─── Right detail column ─── */
+.card-cart__detail {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    gap: 0.55rem;
+    padding-right: 3rem;
+}
+
+/* ─── Header row ─── */
+.card-cart__header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 0.75rem;
+}
+
+.card-cart__title {
+    font-family: 'Arial Black', 'Arial', sans-serif;
+    font-size: 1.15rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+    color: var(--color-black);
+    line-height: 1.1;
+    margin: 0;
+}
+
+.card-cart__delete-form {
+    flex-shrink: 0;
+    margin: 0;
+}
+
+.card-cart__delete-btn {
+    width: 1.7rem;
+    height: 1.7rem;
+    background-color: var(--color-white);
+    border: 2px solid var(--color-black);
+    box-shadow: 2px 2px 0 0 var(--color-black);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    padding: 0;
+    transition: transform 0.1s ease, box-shadow 0.1s ease, background-color 0.15s ease;
+}
+
+.card-cart__delete-btn:hover {
+    background-color: #FFF0F0;
+}
+
+.card-cart__delete-btn:active {
+    transform: translate(2px, 2px);
+    box-shadow: 0px 0px 0 0 var(--color-black);
+}
+
+.card-cart__delete-btn svg {
+    width: 0.75rem;
+    height: 0.75rem;
+    stroke: var(--color-black);
+    stroke-width: 2.8;
+    fill: none;
+}
+
+/* ─── Topping badges ─── */
+.card-cart__toppings {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+}
+
+.card-cart__topping-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    background-color: var(--color-teal-light, #3FFFD8);
+    color: var(--color-black);
+    font-family: "Courier New", monospace;
+    font-size: 0.6rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    padding: 0.14rem 0.55rem;
+    border: 1.8px solid var(--color-black);
+    box-shadow: 1.8px 1.8px 0 0 var(--color-black);
+    width: fit-content;
+    line-height: 1.3;
+}
+
+.card-cart__topping-plus {
+    font-weight: 900;
+    opacity: 0.85;
+}
+
+.card-cart__topping-sep {
+    opacity: 0.7;
+}
+
+.card-cart__topping-price {
+    font-weight: 700;
+}
+
+/* ─── Notes section ─── */
+.card-cart__notes {
+    display: flex;
+    flex-direction: column;
+    gap: 0.22rem;
+}
+
+.card-cart__notes-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+    padding-left: 0.1rem;
+}
+
+.card-cart__notes-label {
+    font-family: "Courier New", monospace;
+    font-size: 0.6rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    color: var(--color-gray-700);
+}
+
+.card-cart__notes-edit-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    background-color: var(--color-yellow, #FFDE59);
+    color: var(--color-black);
+    border: 1.8px solid var(--color-black);
+    box-shadow: 1.8px 1.8px 0 0 var(--color-black);
+    padding: 0.12rem 0.45rem;
+    font-family: "Courier New", monospace;
+    font-size: 0.55rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    cursor: pointer;
+    transition: transform 0.1s ease, box-shadow 0.1s ease, background-color 0.12s ease;
+    line-height: 1;
+}
+
+.card-cart__notes-edit-btn:hover {
+    background-color: #FFE98A;
+    transform: translate(-0.5px, -0.5px);
+    box-shadow: 2.3px 2.3px 0 0 var(--color-black);
+}
+
+.card-cart__notes-edit-btn:active {
+    transform: translate(1.5px, 1.5px);
+    box-shadow: 0.3px 0.3px 0 0 var(--color-black);
+}
+
+.card-cart__notes-edit-btn svg {
+    width: 0.65rem;
+    height: 0.65rem;
+    stroke: var(--color-black);
+    stroke-width: 2.4;
+    fill: none;
+}
+
+.card-cart__notes-box {
+    background-color: #F4F7F9;
+    border: 2px solid var(--color-black);
+    box-shadow: 2px 2px 0 0 rgba(0, 0, 0, 0.18);
+    padding: 0.45rem 0.7rem;
+    min-height: 46px;
+    display: flex;
+    align-items: flex-start;
+}
+
+.card-cart__notes-text {
+    font-size: 0.78rem;
+    font-style: italic;
+    line-height: 1.45;
+    color: var(--color-gray-800);
+    margin: 0;
+    font-weight: 500;
+}
+
+.card-cart__notes-text--empty {
+    color: var(--color-gray-500);
+    font-style: normal;
+    font-weight: 600;
+    font-size: 0.72rem;
+    letter-spacing: 0.3px;
+}
+
+/* ─── Notes edit mode ─── */
+.card-cart__notes-edit {
+    display: flex;
+    flex-direction: column;
+    gap: 0.45rem;
+}
+
+.card-cart__notes-textarea {
+    width: 100%;
+    box-sizing: border-box;
+    background-color: #FFFDF4;
+    border: 2px solid var(--color-black);
+    box-shadow: 2.5px 2.5px 0 0 rgba(0, 0, 0, 0.5);
+    padding: 0.45rem 0.6rem;
+    font-family: inherit;
+    font-size: 0.78rem;
+    line-height: 1.45;
+    color: var(--color-black);
+    resize: vertical;
+    min-height: 68px;
+    outline: none;
+    transition: background-color 0.1s ease;
+}
+
+.card-cart__notes-textarea:focus {
+    background-color: #FFFFEF;
+}
+
+.card-cart__notes-textarea::placeholder {
+    color: var(--color-gray-500);
+    font-style: italic;
+}
+
+.card-cart__notes-textarea:disabled {
+    background-color: #F0F0F0;
+    cursor: not-allowed;
+    opacity: 0.7;
+}
+
+.card-cart__notes-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    justify-content: flex-end;
+}
+
+.card-cart__notes-save-btn,
+.card-cart__notes-cancel-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 72px;
+    height: 1.9rem;
+    padding: 0 0.7rem;
+    font-family: "Courier New", monospace;
+    font-size: 0.6rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border: 2px solid var(--color-black);
+    box-shadow: 2px 2px 0 0 var(--color-black);
+    cursor: pointer;
+    transition: transform 0.08s ease, box-shadow 0.08s ease, background-color 0.12s ease;
+}
+
+.card-cart__notes-save-btn {
+    background-color: var(--color-green, #5DFF8C);
+    color: var(--color-black);
+}
+
+.card-cart__notes-save-btn:hover:not(:disabled) {
+    background-color: #7DFFA3;
+}
+
+.card-cart__notes-cancel-btn {
+    background-color: var(--color-white);
+    color: var(--color-black);
+}
+
+.card-cart__notes-cancel-btn:hover:not(:disabled) {
+    background-color: #F3F3F3;
+}
+
+.card-cart__notes-save-btn:active:not(:disabled),
+.card-cart__notes-cancel-btn:active:not(:disabled) {
+    transform: translate(2px, 2px);
+    box-shadow: 0 0 0 0 var(--color-black);
+}
+
+.card-cart__notes-save-btn:disabled,
+.card-cart__notes-cancel-btn:disabled {
+    opacity: 0.55;
+    cursor: not-allowed;
+}
+
+/* ─── Bottom row: stepper + subtotal ─── */
+.card-cart__bottom {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 0.75rem;
+    padding-top: 0.1rem;
+}
+
+/* ─── Quantity Stepper ─── */
+.card-cart__stepper {
+    display: inline-flex;
+    align-items: stretch;
+    border: 2px solid var(--color-black);
+    box-shadow: 2.5px 2.5px 0 0 var(--color-black);
+    background-color: var(--color-white);
+    transition: transform 0.1s ease, box-shadow 0.1s ease, opacity 0.12s ease;
+}
+
+.card-cart__stepper.is-loading {
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+.card-cart__stepper-form {
+    display: none;
+}
+
+.card-cart__stepper-btn {
+    width: 2rem;
+    height: 2rem;
+    background-color: var(--color-black);
+    color: var(--color-white);
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    transition: background-color 0.12s ease;
+    flex-shrink: 0;
+}
+
+.card-cart__stepper-btn:hover {
+    background-color: #1a1a1a;
+}
+
+.card-cart__stepper-btn:active {
+    background-color: #333;
+}
+
+.card-cart__stepper-btn svg {
+    width: 0.78rem;
+    height: 0.78rem;
+    stroke: var(--color-white);
+    stroke-width: 2.6;
+    fill: none;
+}
+
+.card-cart__stepper-value {
+    min-width: 2.5rem;
+    padding: 0 0.55rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.95rem;
+    font-weight: 900;
+    color: var(--color-black);
+    font-family: "Courier New", monospace;
+    background-color: var(--color-white);
+    text-align: center;
+}
+
+/* ─── Subtotal ─── */
+.card-cart__subtotal {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 0.15rem;
+}
+
+.card-cart__subtotal-label {
+    font-family: "Courier New", monospace;
+    font-size: 0.58rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1.6px;
+    color: var(--color-gray-600);
+}
+
+.card-cart__subtotal-price {
+    font-family: 'Arial Black', 'Arial', sans-serif;
+    font-size: 1.2rem;
+    font-weight: 900;
+    color: var(--color-black);
+    letter-spacing: 0.3px;
+    line-height: 1;
+}
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 1024px) {
+    .card-cart {
+        grid-template-columns: auto auto 1fr;
+        gap: 0.85rem;
+        padding: 0.9rem 0.9rem 0.9rem 0.75rem;
+    }
+
+    .card-cart__photo-frame {
+        width: 115px;
+    }
+
+    .card-cart__detail {
+        padding-right: 2.75rem;
+    }
+
+    .card-cart__check-wrap {
+        padding-top: 2.3rem;
+    }
+
+    .card-cart__title {
+        font-size: 1rem;
+    }
+
+    .card-cart__subtotal-price {
+        font-size: 1.05rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .card-cart {
+        grid-template-columns: auto 1fr;
+        grid-template-rows: auto auto;
+        gap: 0.75rem;
+        padding: 0.8rem;
+        padding-right: 0.6rem;
+    }
+
+    .card-cart__right-strip {
+        display: none;
+    }
+
+    .card-cart__check-wrap {
+        grid-row: 1 / 2;
+        grid-column: 1 / 2;
+        padding-top: 0.4rem;
+        align-self: flex-start;
+    }
+
+    .card-cart__photo-wrap {
+        grid-row: 2 / 3;
+        grid-column: 1 / 2;
+        align-self: flex-start;
+    }
+
+    .card-cart__detail {
+        grid-row: 1 / 3;
+        grid-column: 2 / 3;
+        padding-right: 0;
+    }
+
+    .card-cart__photo-frame {
+        width: 90px;
+    }
+
+    .card-cart__check-btn {
+        width: 1.7rem;
+        height: 1.7rem;
+    }
+
+    .card-cart__check-btn svg {
+        width: 0.85rem;
+        height: 0.85rem;
+    }
+
+    .card-cart__title {
+        font-size: 0.9rem;
+    }
+
+    .card-cart__topping-badge {
+        font-size: 0.55rem;
+        padding: 0.12rem 0.45rem;
+        letter-spacing: 0.6px;
+        gap: 0.3rem;
+    }
+
+    .card-cart__notes-label {
+        font-size: 0.55rem;
+        letter-spacing: 1px;
+    }
+
+    .card-cart__notes-edit-btn {
+        font-size: 0.5rem;
+        padding: 0.1rem 0.38rem;
+        gap: 0.2rem;
+    }
+
+    .card-cart__notes-edit-btn svg {
+        width: 0.58rem;
+        height: 0.58rem;
+    }
+
+    .card-cart__notes-box {
+        padding: 0.4rem 0.55rem;
+        min-height: 40px;
+    }
+
+    .card-cart__notes-text {
+        font-size: 0.72rem;
+    }
+
+    .card-cart__notes-textarea {
+        font-size: 0.72rem;
+        padding: 0.38rem 0.5rem;
+        min-height: 60px;
+    }
+
+    .card-cart__notes-save-btn,
+    .card-cart__notes-cancel-btn {
+        min-width: 62px;
+        height: 1.75rem;
+        font-size: 0.55rem;
+        padding: 0 0.55rem;
+    }
+
+    .card-cart__bottom {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.6rem;
+    }
+
+    .card-cart__subtotal {
+        align-items: flex-start;
+    }
+
+    .card-cart__stepper-btn {
+        width: 1.8rem;
+        height: 1.8rem;
+    }
+
+    .card-cart__stepper-value {
+        min-width: 2.3rem;
+        padding: 0 0.45rem;
+        font-size: 0.85rem;
+    }
+
+    .card-cart__subtotal-price {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .card-cart {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto auto auto;
+        gap: 0.6rem;
+        padding: 0.7rem;
+        box-shadow: 3.5px 3.5px 0 0 var(--color-black);
+    }
+
+    .card-cart:hover {
+        box-shadow: 5px 5px 0 0 var(--color-black);
+    }
+
+    .card-cart__check-wrap {
+        grid-row: 1 / 2;
+        padding-top: 0;
+        display: flex;
+        align-self: flex-start;
+        z-index: 10;
+    }
+
+    .card-cart__photo-wrap {
+        grid-row: 2 / 3;
+        grid-column: 1 / 2;
+    }
+
+    .card-cart__detail {
+        grid-row: 3 / 4;
+        grid-column: 1 / 2;
+    }
+
+    .card-cart__photo-frame {
+        width: 100%;
+        max-width: 180px;
+        aspect-ratio: 4 / 3;
+    }
+
+    .card-cart__title {
+        font-size: 0.88rem;
+    }
+}

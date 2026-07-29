@@ -1,0 +1,404 @@
+/* ═══════════════════════════════════════
+   CARD ORDER — Pesanan Buyer (Neobrutalist)
+   ═══════════════════════════════════════ */
+
+.card-order {
+    background-color: var(--color-white);
+    background-image: radial-gradient(circle, rgba(0, 0, 0, 0.06) 1px, transparent 1px);
+    background-size: 12px 12px;
+    border: 2.5px solid var(--color-black);
+    border-radius: 0;
+    padding: 0;
+    margin-bottom: 1.25rem;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+    box-shadow: 5px 5px 0 0 var(--color-black);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.card-order:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 7px 7px 0 0 var(--color-black);
+}
+
+.card-order:active {
+    transform: translate(2px, 2px);
+    box-shadow: 2.5px 2.5px 0 0 var(--color-black);
+}
+
+/* ─── Header (Code, Date, Status) ─── */
+.card-order__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 0.75rem;
+    border-bottom: 2.5px solid var(--color-black);
+    background-image: radial-gradient(circle, rgba(0, 0, 0, 0.05) 1px, transparent 1px);
+    background-size: 8px 8px;
+}
+
+.card-order__code-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.card-order__code {
+    font-family: 'Arial Black', 'Arial', sans-serif;
+    font-size: 1rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: -0.2px;
+    color: var(--color-black);
+    line-height: 1;
+}
+
+.card-order__date {
+    font-family: "Courier New", monospace;
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    color: rgba(0, 0, 0, 0.6);
+}
+
+/* ─── Status Badge ─── */
+.card-order__status-badge {
+    font-family: 'Arial Black', 'Arial', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 0.5rem 0.75rem;
+    border: 1.5px solid var(--color-black);
+    border-radius: 0;
+    background: var(--color-white);
+    color: var(--color-black);
+    white-space: nowrap;
+    line-height: 1;
+}
+
+.card-order__status--pending {
+    background: #FFF8E1;
+    border-color: var(--color-warning, #FFC107);
+    color: #F57C00;
+}
+
+.card-order__status--accepted,
+.card-order__status--paid {
+    background: #E8F5E9;
+    border-color: var(--color-teal);
+    color: var(--color-teal);
+}
+
+.card-order__status--processing,
+.card-order__status--ready {
+    background: #E3F2FD;
+    border-color: var(--color-cyan);
+    color: var(--color-cyan);
+}
+
+.card-order__status--done {
+    background: #C8E6C9;
+    border-color: #4CAF50;
+    color: #2E7D32;
+}
+
+.card-order__status--cancelled,
+.card-order__status--rejected {
+    background: #FFEBEE;
+    border-color: var(--color-error, #F44336);
+    color: var(--color-error);
+}
+
+/* ─── Canteen ─── */
+.card-order__canteen {
+    display: flex;
+    align-items: baseline;
+    gap: 0.5rem;
+    padding: 0.65rem 0.75rem;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    background-image: radial-gradient(circle, rgba(0, 0, 0, 0.05) 1px, transparent 1px);
+    background-size: 8px 8px;
+}
+
+.card-order__canteen-label {
+    font-family: "Courier New", monospace;
+    font-size: 0.65rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    color: rgba(0, 0, 0, 0.6);
+    min-width: fit-content;
+}
+
+.card-order__canteen-name {
+    font-family: 'Arial Black', 'Arial', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 700;
+    text-transform: capitalize;
+    color: var(--color-black);
+}
+
+/* ─── Items Summary ─── */
+.card-order__items-summary {
+    background: rgba(0, 0, 0, 0.03);
+    border: none;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    padding: 0.75rem;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.65rem;
+    flex: 1;
+    background-image: radial-gradient(circle, rgba(0, 0, 0, 0.05) 1px, transparent 1px);
+    background-size: 8px 8px;
+}
+
+.card-order__item-line {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+    color: rgba(0, 0, 0, 0.8);
+    flex-wrap: wrap;
+}
+
+.card-order__item-qty {
+    font-family: 'Arial Black', 'Arial', sans-serif;
+    font-weight: 700;
+    min-width: fit-content;
+    color: var(--color-black);
+}
+
+.card-order__item-name {
+    font-weight: 600;
+    flex: 1;
+    min-width: 100px;
+}
+
+.card-order__item-toppings {
+    font-style: italic;
+    font-size: 0.85rem;
+    color: rgba(0, 0, 0, 0.6);
+    flex-basis: 100%;
+    padding-left: 1.5rem;
+}
+
+.card-order__item-price {
+    font-family: 'Arial Black', 'Arial', sans-serif;
+    font-weight: 700;
+    color: var(--color-teal);
+    min-width: fit-content;
+}
+
+/* ─── Footer (Total) ─── */
+.card-order__footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem;
+    margin: 0;
+    border-top: 2px solid rgba(0, 0, 0, 0.15);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    background-image: radial-gradient(circle, rgba(0, 0, 0, 0.05) 1px, transparent 1px);
+    background-size: 8px 8px;
+}
+
+.card-order__total-label {
+    font-family: "Courier New", monospace;
+    font-size: 0.7rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    color: rgba(0, 0, 0, 0.75);
+}
+
+.card-order__total-price {
+    font-family: 'Arial Black', 'Arial', sans-serif;
+    font-size: 1.25rem;
+    font-weight: 900;
+    color: var(--color-teal);
+    letter-spacing: 0.3px;
+}
+
+/* ─── Actions ─── */
+.card-order__actions {
+    display: flex;
+    gap: 0.65rem;
+    flex-wrap: wrap;
+    padding: 0.75rem;
+    background-image: radial-gradient(circle, rgba(0, 0, 0, 0.05) 1px, transparent 1px);
+    background-size: 8px 8px;
+}
+
+.card-order__action-btn {
+    flex: 1;
+    min-width: 110px;
+    padding: 0.55rem 0.75rem;
+    font-family: 'Courier New', monospace;
+    font-size: 0.78rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border: 2px solid var(--color-black);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.1s ease;
+    border-radius: 0;
+    box-shadow: 2.5px 2.5px 0 0 var(--color-black);
+}
+
+.card-order__action-btn--primary {
+    background: var(--color-white);
+    color: var(--color-black);
+    border-color: var(--color-black);
+}
+
+.card-order__action-btn--primary:hover {
+    background: var(--color-teal-light);
+    transform: translate(-1px, -1px);
+    box-shadow: 3.5px 3.5px 0 0 var(--color-black);
+}
+
+.card-order__action-btn--primary:active {
+    transform: translate(1px, 1px);
+    box-shadow: 1px 1px 0 0 var(--color-black);
+}
+
+.card-order__action-btn--secondary {
+    background: var(--color-white);
+    color: var(--color-black);
+    border-color: var(--color-black);
+}
+
+.card-order__action-btn--secondary:hover {
+    background: #F0F0F0;
+    transform: translate(-1px, -1px);
+    box-shadow: 3.5px 3.5px 0 0 var(--color-black);
+}
+
+.card-order__action-btn--secondary:active {
+    transform: translate(1px, 1px);
+    box-shadow: 1px 1px 0 0 var(--color-black);
+}
+
+.card-order__action-btn--success {
+    background: var(--color-teal);
+    color: var(--color-black);
+    border-color: var(--color-black);
+}
+
+.card-order__action-btn--success:hover {
+    background: var(--color-teal-light, #3FFFD8);
+    transform: translate(-1px, -1px);
+    box-shadow: 3.5px 3.5px 0 0 var(--color-black);
+}
+
+.card-order__action-btn--success:active {
+    transform: translate(1px, 1px);
+    box-shadow: 1px 1px 0 0 var(--color-black);
+}
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 640px) {
+    .card-order {
+        padding: 1rem;
+        margin-bottom: 0.85rem;
+    }
+
+    .card-order__header {
+        flex-direction: column;
+        margin-bottom: 0.6rem;
+        padding-bottom: 0.6rem;
+    }
+
+    .card-order__code {
+        font-size: 0.95rem;
+    }
+
+    .card-order__date {
+        font-size: 0.65rem;
+    }
+
+    .card-order__status-badge {
+        font-size: 0.7rem;
+        padding: 0.45rem 0.65rem;
+        align-self: flex-start;
+    }
+
+    .card-order__canteen-name {
+        font-size: 0.9rem;
+    }
+
+    .card-order__items-summary {
+        padding: 0.65rem;
+        margin-bottom: 0.65rem;
+    }
+
+    .card-order__item-line {
+        font-size: 0.85rem;
+    }
+
+    .card-order__total-price {
+        font-size: 1.1rem;
+    }
+
+    .card-order__actions {
+        gap: 0.6rem;
+    }
+
+    .card-order__action-btn {
+        min-width: 100px;
+        padding: 0.55rem 0.7rem;
+        font-size: 0.8rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .card-order {
+        padding: 0.85rem;
+        border-width: 2px;
+    }
+
+    .card-order__code {
+        font-size: 0.9rem;
+    }
+
+    .card-order__status-badge {
+        font-size: 0.65rem;
+        padding: 0.4rem 0.6rem;
+    }
+
+    .card-order__canteen-name {
+        font-size: 0.85rem;
+    }
+
+    .card-order__item-line {
+        font-size: 0.8rem;
+    }
+
+    .card-order__total-label {
+        font-size: 0.65rem;
+    }
+
+    .card-order__total-price {
+        font-size: 1rem;
+    }
+
+    .card-order__actions {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .card-order__action-btn {
+        min-width: 100%;
+        font-size: 0.75rem;
+    }
+}

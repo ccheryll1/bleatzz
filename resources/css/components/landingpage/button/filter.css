@@ -1,0 +1,148 @@
+/* ═══════════════════════════════════════
+   SORT FILTER (Reusable)
+   ═══════════════════════════════════════ */
+
+.sort-filter {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    height: 44px;
+}
+
+.sort-filter__label {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 0.6rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--color-white);
+    white-space: nowrap;
+}
+
+.sort-filter__select-wrap {
+    position: relative;
+    min-width: 200px;
+    height: 44px;
+    display: flex;
+    align-items: stretch;
+}
+
+.sort-filter__select {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    width: 100%;
+    height: 100%;
+    background-color: var(--color-black);
+    color: var(--color-white);
+    font-family: 'Arial Black', 'Arial', sans-serif;
+    font-size: 0.65rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+    padding: 0 2.2rem 0 0.85rem;
+    border: 3px solid var(--color-black);
+    box-shadow: 4px 4px 0 0 var(--color-black);
+    cursor: pointer;
+    outline: none;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: 1;
+}
+
+.sort-filter__select:hover {
+    background-color: #111;
+}
+
+.sort-filter__select:focus {
+    background-color: var(--color-teal);
+    color: var(--color-black);
+}
+
+.sort-filter__chevron {
+    position: absolute;
+    right: 0.75rem;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 14px;
+    height: 14px;
+    color: var(--color-white);
+    pointer-events: none;
+}
+
+.sort-filter__select:focus + .sort-filter__chevron {
+    color: var(--color-black);
+}
+
+/* Light (white) variant */
+.sort-filter--light .sort-filter__label {
+    color: var(--color-black);
+}
+
+.sort-filter--light .sort-filter__select {
+    background-color: var(--color-white);
+    color: var(--color-black);
+    border-color: var(--color-black);
+}
+
+.sort-filter--light .sort-filter__select:hover {
+    background-color: var(--color-gray-100);
+}
+
+.sort-filter--light .sort-filter__select:focus {
+    background-color: var(--color-teal-light);
+    color: var(--color-black);
+}
+
+.sort-filter--light .sort-filter__chevron {
+    color: var(--color-black);
+}
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 768px) {
+    .sort-filter {
+        gap: 0.4rem;
+        height: 40px;
+    }
+
+    .sort-filter__label {
+        font-size: 0.52rem;
+        letter-spacing: 0.8px;
+    }
+
+    .sort-filter__select-wrap {
+        min-width: 170px;
+        height: 40px;
+    }
+
+    .sort-filter__select {
+        font-size: 0.58rem;
+        padding: 0 2rem 0 0.75rem;
+        box-shadow: 3px 3px 0 0 var(--color-black);
+        letter-spacing: 0.3px;
+    }
+
+    .sort-filter__chevron {
+        width: 12px;
+        height: 12px;
+        right: 0.65rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .sort-filter {
+        height: 38px;
+    }
+
+    .sort-filter__select-wrap {
+        min-width: 150px;
+        height: 38px;
+    }
+
+    .sort-filter__select {
+        font-size: 0.52rem;
+        padding: 0 1.8rem 0 0.65rem;
+    }
+}

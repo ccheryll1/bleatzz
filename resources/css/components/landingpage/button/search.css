@@ -1,0 +1,124 @@
+/* ═══════════════════════════════════════
+   SEARCH BOX (Reusable)
+   ═══════════════════════════════════════ */
+
+.search-box {
+    width: 100%;
+}
+
+.search-box__inner {
+    display: flex;
+    align-items: stretch;
+    background-color: var(--color-white);
+    border: 3px solid var(--color-black);
+    box-shadow: 4px 4px 0 0 var(--color-black);
+    overflow: hidden;
+    position: relative;
+    height: 44px;
+}
+
+/* Icon button (dark square) */
+.search-box__icon-btn {
+    flex-shrink: 0;
+    width: 44px;
+    height: 100%;
+    background-color: var(--color-black);
+    color: var(--color-white);
+    border: none;
+    border-right: 3px solid var(--color-black);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.search-box__icon-btn:hover {
+    background-color: var(--color-teal);
+    color: var(--color-black);
+}
+
+.search-box__icon-btn:active {
+    transform: translate(1px, 1px);
+}
+
+.search-box__icon {
+    width: 20px;
+    height: 20px;
+    display: block;
+}
+
+/* Text input */
+.search-box__input {
+    flex: 1;
+    border: none;
+    outline: none;
+    background-color: var(--color-white);
+    color: var(--color-black);
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 0.82rem;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+    padding: 0 0.9rem;
+    text-transform: none;
+    height: 100%;
+}
+
+.search-box__input::placeholder {
+    color: var(--color-gray-600);
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 0.72rem;
+}
+
+.search-box__input:focus {
+    background-color: #F7FFFE;
+}
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 768px) {
+    .search-box__inner {
+        height: 40px;
+        box-shadow: 3px 3px 0 0 var(--color-black);
+    }
+
+    .search-box__icon-btn {
+        width: 40px;
+    }
+
+    .search-box__icon {
+        width: 18px;
+        height: 18px;
+    }
+
+    .search-box__input {
+        font-size: 0.75rem;
+        padding: 0 0.75rem;
+    }
+
+    .search-box__input::placeholder {
+        font-size: 0.65rem;
+        letter-spacing: 0.8px;
+    }
+}
+
+@media (max-width: 480px) {
+    .search-box__inner {
+        height: 38px;
+    }
+
+    .search-box__icon-btn {
+        width: 38px;
+    }
+
+    .search-box__icon {
+        width: 16px;
+        height: 16px;
+    }
+
+    .search-box__input {
+        font-size: 0.7rem;
+        padding: 0 0.6rem;
+    }
+}

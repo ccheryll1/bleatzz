@@ -1,0 +1,63 @@
+/**
+ * Bleatz Color Template
+ * =====================
+ * Warna-warna utama yang digunakan di seluruh aplikasi web Bleatz.
+ * Diambil dari desain halaman register sebagai referensi utama.
+ */
+
+:root {
+    /* ─── Primary Colors ─── */
+    --color-black:          #000000;
+    --color-white:          #FFFFFF;
+
+    /* ─── Brand / Accent ─── */
+    --color-teal:           #00C9A7;      /* aksen utama (badge "NEW", tombol hover) */
+    --color-teal-dark:      #009E84;      /* teal sedikit lebih gelap untuk hover state */
+    --color-teal-light:     #3FFFD8;      /* teal muda (background tombol tambahkan) */
+    --color-cyan:           #0055FF;      /* biru cyan untuk outline teks + heart icon */
+
+    /* ─── Neutral / Gray Scale ─── */
+    --color-gray-50:        #F9F9F9;      /* background input field */
+    --color-gray-100:       #F2F2F2;
+    --color-gray-200:       #E5E5E5;
+    --color-gray-300:       #CCCCCC;      /* border input default */
+    --color-gray-400:       #B0B0B0;      /* placeholder icon */
+    --color-gray-600:       #666666;      /* teks sekunder / placeholder */
+    --color-gray-800:       #333333;      /* teks body */
+    --color-gray-900:       #1A1A1A;      /* teks heading */
+
+    /* ─── Background ─── */
+    --color-bg-left:        #000000;      /* panel kiri (hitam) */
+    --color-bg-right:       #FFFFFF;      /* panel kanan (putih) */
+    --color-bg-card:        #FFFFFF;      /* kartu di panel kiri */
+
+    /* ─── Text ─── */
+    --color-text-primary:   #000000;
+    --color-text-secondary: #555555;
+    --color-text-muted:     #888888;
+    --color-text-light:     #FFFFFF;
+    --color-text-link:      #000000;      /* link "Masuk di sini" */
+    --color-text-link-hover: #00C9A7;
+
+    /* ─── Button ─── */
+    --color-btn-primary-bg:         #000000;
+    --color-btn-primary-text:       #FFFFFF;
+    --color-btn-primary-hover-bg:   #7FFFD4;  /* aquamarine / teal muda saat hover */
+    --color-btn-primary-hover-text: #000000;
+    --color-btn-primary-hover-border: #000000;
+
+    /* ─── Input / Form ─── */
+    --color-input-bg:       #F9F9F9;
+    --color-input-border:   #CCCCCC;
+    --color-input-focus:    #00C9A7;
+    --color-input-text:     #000000;
+
+    /* ─── Badge / Label ─── */
+    --color-badge-bg:       #00C9A7;
+    --color-badge-text:     #FFFFFF;
+
+    /* ─── Status / Feedback ─── */
+    --color-error:          #E53E3E;
+    --color-success:        #00C9A7;
+    --color-warning:        #ECC94B;
+}

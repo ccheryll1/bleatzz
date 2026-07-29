@@ -1,0 +1,330 @@
+/* ═══════════════════════════════════════
+   CARD SUMMARY — Dossier Summary (Neobrutalist) — COMPACT
+   ═══════════════════════════════════════ */
+
+.card-summary {
+    position: relative;
+    background-color: var(--color-black);
+    color: var(--color-white);
+    width: 100%;
+    display: block;
+    overflow: visible;
+}
+
+/* Teal offset border/shadow on right + bottom */
+.card-summary__teal-border {
+    position: absolute;
+    top: 6px;
+    left: 6px;
+    right: 0;
+    bottom: -6px;
+    background-color: var(--color-teal-light, #3FFFD8);
+    z-index: 0;
+    pointer-events: none;
+}
+
+.card-summary__inner {
+    position: relative;
+    z-index: 1;
+    background-color: var(--color-black);
+    padding: 1.5rem 1.25rem 1.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.05rem;
+}
+
+/* ─── Title ─── */
+.card-summary__title {
+    font-family: 'Arial Black', 'Arial', sans-serif;
+    font-size: 1.25rem;
+    font-weight: 900;
+    color: var(--color-white);
+    text-transform: uppercase;
+    letter-spacing: -0.3px;
+    line-height: 1.1;
+    margin: 0;
+    font-style: italic;
+    transform: skew(-4deg);
+    padding-bottom: 0.1rem;
+}
+
+/* ─── Dividers ─── */
+.card-summary__divider {
+    width: 100%;
+    height: 2px;
+    margin: 0;
+}
+
+.card-summary__divider--solid {
+    background-color: var(--color-white);
+    opacity: 0.95;
+}
+
+.card-summary__divider--dashed {
+    background-color: transparent;
+    border-top: 1.5px dashed rgba(255, 255, 255, 0.32);
+    height: 0;
+}
+
+/* ─── Summary rows ─── */
+.card-summary__rows {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    padding: 0.1rem 0;
+}
+
+.card-summary__row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+}
+
+.card-summary__label {
+    font-family: "Courier New", monospace;
+    font-size: 0.65rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.8px;
+    color: rgba(255, 255, 255, 0.75);
+}
+
+.card-summary__value {
+    font-family: 'Arial Black', 'Arial', sans-serif;
+    font-weight: 900;
+    color: var(--color-white);
+    letter-spacing: 0.3px;
+}
+
+.card-summary__value--num {
+    font-size: 1.5rem;
+    line-height: 1;
+}
+
+.card-summary__value--price {
+    font-size: 1.1rem;
+    line-height: 1.1;
+}
+
+/* ─── Grand total row ─── */
+.card-summary__total-row {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 0.75rem;
+    padding: 0.25rem 0 0;
+}
+
+.card-summary__total-label {
+    font-family: "Courier New", monospace;
+    font-size: 0.7rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1.8px;
+    color: rgba(255, 255, 255, 0.85);
+    flex-shrink: 0;
+}
+
+.card-summary__total-value {
+    font-family: 'Arial Black', 'Arial', sans-serif;
+    font-size: 1.75rem;
+    font-weight: 900;
+    color: var(--color-teal-light, #3FFFD8);
+    letter-spacing: 0.3px;
+    line-height: 1;
+}
+
+/* ─── CTA Button ─── */
+.card-summary__cta-wrap {
+    position: relative;
+    width: 100%;
+    padding-top: 0.3rem;
+}
+
+.card-summary__cta-btn {
+    position: relative;
+    width: 100%;
+    background-color: var(--color-teal-light, #3FFFD8);
+    color: var(--color-black);
+    font-family: 'Arial Black', 'Arial', sans-serif;
+    font-size: 0.92rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 0.9px;
+    padding: 0.75rem 1rem;
+    border: 2.5px solid var(--color-black);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+    transition: transform 0.1s ease, box-shadow 0.1s ease, background-color 0.15s ease;
+    z-index: 1;
+    box-shadow: 4px 4px 0 0 var(--color-black), 5px 5px 0 0 var(--color-white);
+}
+
+.card-summary__cta-btn::after {
+    content: "";
+    position: absolute;
+    left: 5px;
+    top: 5px;
+    right: -5px;
+    bottom: -5px;
+    border: 2.5px solid var(--color-white);
+    pointer-events: none;
+    z-index: -1;
+}
+
+.card-summary__cta-btn:hover:not(:disabled) {
+    background-color: var(--color-teal, #00C9A7);
+    transform: translate(-1px, -1px);
+    box-shadow: 5px 5px 0 0 var(--color-black), 6px 6px 0 0 var(--color-white);
+}
+
+.card-summary__cta-btn:active:not(:disabled) {
+    transform: translate(3px, 3px);
+    box-shadow: 1px 1px 0 0 var(--color-black), 2px 2px 0 0 var(--color-white);
+}
+
+.card-summary__cta-btn:disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+}
+
+.card-summary__cta-text {
+    line-height: 1;
+}
+
+.card-summary__cta-icon {
+    width: 1.1rem;
+    height: 1.1rem;
+    stroke: var(--color-black);
+    stroke-width: 2.8;
+    fill: none;
+    flex-shrink: 0;
+}
+
+/* ─── Confirmation note ─── */
+.card-summary__note {
+    font-size: 0.72rem;
+    line-height: 1.5;
+    color: rgba(255, 255, 255, 0.7);
+    text-align: center;
+    margin: 0;
+    font-style: italic;
+    font-weight: 500;
+    padding: 0 0.25rem;
+}
+
+/* ─── Security footer ─── */
+.card-summary__security {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.55rem;
+    padding-top: 0.25rem;
+    opacity: 0.75;
+}
+
+.card-summary__security-icon {
+    width: 0.9rem;
+    height: 0.9rem;
+    stroke: rgba(255, 255, 255, 0.8);
+    stroke-width: 2;
+    fill: none;
+    flex-shrink: 0;
+}
+
+.card-summary__security-text {
+    font-family: "Courier New", monospace;
+    font-size: 0.56rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.6px;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 768px) {
+    .card-summary__inner {
+        padding: 1.35rem 1.15rem 1.15rem;
+        gap: 0.9rem;
+    }
+
+    .card-summary__title {
+        font-size: 1.1rem;
+    }
+
+    .card-summary__value--num {
+        font-size: 1.3rem;
+    }
+
+    .card-summary__value--price {
+        font-size: 1rem;
+    }
+
+    .card-summary__total-value {
+        font-size: 1.5rem;
+    }
+
+    .card-summary__cta-btn {
+        font-size: 0.82rem;
+        padding: 0.65rem 0.85rem;
+        gap: 0.5rem;
+    }
+
+    .card-summary__cta-icon {
+        width: 1rem;
+        height: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .card-summary__teal-border {
+        top: 5px;
+        left: 5px;
+        bottom: -5px;
+    }
+
+    .card-summary__inner {
+        padding: 1.1rem 1rem 1rem;
+    }
+
+    .card-summary__title {
+        font-size: 1rem;
+    }
+
+    .card-summary__label {
+        font-size: 0.58rem;
+        letter-spacing: 1.5px;
+    }
+
+    .card-summary__value--num {
+        font-size: 1.15rem;
+    }
+
+    .card-summary__value--price {
+        font-size: 0.92rem;
+    }
+
+    .card-summary__total-value {
+        font-size: 1.25rem;
+    }
+
+    .card-summary__cta-btn {
+        font-size: 0.75rem;
+        padding: 0.6rem 0.75rem;
+        letter-spacing: 0.6px;
+        box-shadow: 3px 3px 0 0 var(--color-black), 4px 4px 0 0 var(--color-white);
+    }
+
+    .card-summary__note {
+        font-size: 0.66rem;
+    }
+
+    .card-summary__security-text {
+        font-size: 0.52rem;
+        letter-spacing: 1.4px;
+    }
+}

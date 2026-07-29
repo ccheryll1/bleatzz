@@ -1,0 +1,112 @@
+/* Admin Table - Neobrutalist */
+
+.admin-table-wrapper {
+    overflow-x: auto;
+    border: 3px solid var(--color-black);
+    box-shadow: 5px 5px 0 var(--color-black);
+    background: var(--color-white);
+}
+
+.admin-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+}
+
+.admin-table thead {
+    background: var(--color-black);
+    color: var(--color-white);
+}
+
+.admin-table th {
+    padding: 14px 16px;
+    text-align: left;
+    font-weight: 800;
+    font-family: 'Courier New', monospace;
+    letter-spacing: 0.5px;
+    font-size: 12px;
+    text-transform: uppercase;
+    border-bottom: 3px solid var(--color-black);
+    white-space: nowrap;
+}
+
+.admin-table td {
+    padding: 13px 16px;
+    border-bottom: 2px solid var(--color-gray-200);
+    color: var(--color-text-primary);
+    vertical-align: middle;
+}
+
+.admin-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.admin-table tbody tr:hover {
+    background: var(--color-gray-50);
+}
+
+.admin-table tbody tr:hover td {
+    border-bottom-color: var(--color-gray-300);
+}
+
+/* Badges in table */
+.admin-badge {
+    display: inline-block;
+    padding: 4px 10px;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    font-family: 'Courier New', monospace;
+    border: 2px solid var(--color-black);
+    text-transform: uppercase;
+}
+
+.admin-badge-buyer {
+    background: var(--color-gray-200);
+    color: var(--color-black);
+}
+
+.admin-badge-seller {
+    background: var(--color-teal);
+    color: var(--color-black);
+}
+
+.admin-badge-manager {
+    background: var(--color-cyan);
+    color: var(--color-white);
+}
+
+.admin-badge-active {
+    background: var(--color-success);
+    color: var(--color-black);
+}
+
+.admin-badge-inactive {
+    background: var(--color-gray-300);
+    color: var(--color-gray-600);
+}
+
+/* Empty state */
+.admin-empty-state {
+    text-align: center;
+    padding: 48px 24px;
+    color: var(--color-gray-600);
+}
+
+.admin-empty-state-icon {
+    font-size: 48px;
+    margin-bottom: 16px;
+    font-family: 'Courier New', monospace;
+    color: var(--color-gray-400);
+}
+
+.admin-empty-state-text {
+    font-size: 15px;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.admin-empty-state-sub {
+    font-size: 13px;
+    color: var(--color-gray-500);
+}

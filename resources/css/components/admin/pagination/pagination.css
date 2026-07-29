@@ -1,0 +1,83 @@
+/* Admin Pagination - Neobrutalist */
+
+.pagination {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    flex-wrap: wrap;
+    padding: 20px;
+    background: var(--color-white);
+    border: 3px solid var(--color-black);
+    box-shadow: 5px 5px 0 var(--color-black);
+    margin-top: 24px;
+}
+
+.page-item {
+    display: inline-flex;
+    align-items: center;
+}
+
+.page-item.active .page-link {
+    background: var(--color-teal);
+    color: var(--color-black);
+    border-color: var(--color-black);
+    box-shadow: 4px 4px 0 var(--color-black);
+    font-weight: 800;
+}
+
+.page-item.disabled .page-link {
+    opacity: 0.5;
+    cursor: not-allowed;
+    box-shadow: none;
+}
+
+.page-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 40px;
+    height: 40px;
+    padding: 8px 12px;
+    font-size: 13px;
+    font-weight: 700;
+    text-decoration: none;
+    color: var(--color-black);
+    background: var(--color-white);
+    border: 2px solid var(--color-black);
+    cursor: pointer;
+    transition: all 0.12s ease;
+    font-family: 'Courier New', monospace;
+}
+
+.page-link:hover:not(.disabled) {
+    background: var(--color-gray-100);
+    box-shadow: 3px 3px 0 var(--color-black);
+    transform: translateY(-2px);
+}
+
+/* Pagination info */
+.pagination-info {
+    font-size: 12px;
+    color: var(--color-gray-600);
+    font-weight: 600;
+    margin: 0 8px;
+}
+
+@media (max-width: 640px) {
+    .pagination {
+        gap: 4px;
+        padding: 16px;
+    }
+
+    .page-link {
+        min-width: 36px;
+        height: 36px;
+        padding: 6px 10px;
+        font-size: 11px;
+    }
+
+    .pagination-info {
+        font-size: 11px;
+    }
+}

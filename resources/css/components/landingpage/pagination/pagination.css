@@ -1,0 +1,174 @@
+/* ═══════════════════════════════════════
+   PAGINATION (Tactical Navigation)
+   ═══════════════════════════════════════ */
+
+.pagination {
+    width: 100%;
+    background-color: var(--color-gray-100);
+    background-image: radial-gradient(circle, rgba(0, 0, 0, 0.05) 1px, transparent 1px);
+    background-size: 14px 14px;
+    padding: 1.25rem 2rem;
+}
+
+.pagination__inner {
+    max-width: 1280px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.6rem;
+}
+
+/* Heading */
+.pagination__title {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: clamp(0.6rem, 1.1vw, 0.75rem);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2.5px;
+    color: var(--color-black);
+    margin: 0;
+}
+
+/* Buttons row */
+.pagination__row {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+/* Shared button base */
+.pagination__btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Arial Black', 'Arial', sans-serif;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--color-black);
+    background-color: var(--color-white);
+    border: 2px solid var(--color-black);
+    box-shadow: 3px 3px 0 0 var(--color-black);
+    text-decoration: none;
+    cursor: pointer;
+    user-select: none;
+    transition: transform 0.1s ease, box-shadow 0.1s ease, background-color 0.15s ease, color 0.15s ease;
+}
+
+.pagination__btn:hover {
+    transform: translate(-1px, -1px);
+    box-shadow: 4px 4px 0 0 var(--color-black);
+}
+
+.pagination__btn:active {
+    transform: translate(1px, 1px);
+    box-shadow: 1px 1px 0 0 var(--color-black);
+}
+
+/* Disabled state */
+.pagination__btn--disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+    pointer-events: none;
+    box-shadow: 2px 2px 0 0 var(--color-black);
+}
+
+.pagination__btn--disabled:hover {
+    transform: none;
+    box-shadow: 2px 2px 0 0 var(--color-black);
+}
+
+/* Nav buttons (PREVIOUS / NEXT) */
+.pagination__btn--nav {
+    font-size: clamp(0.52rem, 0.85vw, 0.65rem);
+    padding: 0.45rem 1rem;
+    min-width: 100px;
+}
+
+/* Page number buttons */
+.pagination__btn--page {
+    font-size: clamp(0.68rem, 1vw, 0.82rem);
+    padding: 0.42rem 0.75rem;
+    min-width: 40px;
+    min-height: 40px;
+}
+
+/* Active page state (black bg, white text) */
+.pagination__btn--active {
+    background-color: var(--color-black);
+    color: var(--color-white);
+    border-color: var(--color-black);
+    transform: translate(-1px, -1px);
+    box-shadow: 4px 4px 0 0 var(--color-black);
+}
+
+.pagination__btn--active:hover {
+    background-color: var(--color-gray-800);
+}
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 900px) {
+    .pagination {
+        padding: 1.1rem 1.25rem;
+    }
+
+    .pagination__inner {
+        gap: 0.5rem;
+    }
+
+    .pagination__row {
+        gap: 0.4rem;
+    }
+
+    .pagination__btn--nav {
+        font-size: 0.5rem;
+        padding: 0.4rem 0.85rem;
+        min-width: 86px;
+        letter-spacing: 0.8px;
+    }
+
+    .pagination__btn--page {
+        font-size: 0.68rem;
+        padding: 0.38rem 0.65rem;
+        min-width: 36px;
+        min-height: 36px;
+    }
+
+    .pagination__btn {
+        box-shadow: 2.5px 2.5px 0 0 var(--color-black);
+    }
+}
+
+@media (max-width: 580px) {
+    .pagination {
+        padding: 1rem 1rem;
+    }
+
+    .pagination__title {
+        font-size: 0.52rem;
+        letter-spacing: 2px;
+    }
+
+    .pagination__row {
+        gap: 0.3rem;
+    }
+
+    .pagination__btn--nav {
+        font-size: 0.46rem;
+        padding: 0.35rem 0.7rem;
+        min-width: 72px;
+        letter-spacing: 0.6px;
+        box-shadow: 2px 2px 0 0 var(--color-black);
+    }
+
+    .pagination__btn--page {
+        font-size: 0.62rem;
+        padding: 0.32rem 0.55rem;
+        min-width: 32px;
+        min-height: 32px;
+        box-shadow: 2px 2px 0 0 var(--color-black);
+    }
+}

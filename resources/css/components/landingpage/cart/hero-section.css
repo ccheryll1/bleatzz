@@ -1,0 +1,82 @@
+/* ═══════════════════════════════════════
+   CART HERO SECTION (KERANJANG MISI)
+   ═══════════════════════════════════════ */
+
+.cart-hero {
+    width: 100%;
+    background-color: var(--color-gray-100);
+    background-image: radial-gradient(circle, rgba(0, 0, 0, 0.05) 1px, transparent 1px);
+    background-size: 14px 14px;
+    padding: 3rem 2rem 2.5rem;
+}
+
+.cart-hero__inner {
+    max-width: 1280px;
+    margin: 0 auto;
+}
+
+.cart-hero__text-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    position: relative;
+}
+
+.cart-hero__title {
+    font-family: 'Arial Black', 'Arial', sans-serif;
+    font-size: clamp(2rem, 4vw, 2.8rem);
+    font-weight: 900;
+    color: var(--color-black);
+    text-transform: uppercase;
+    letter-spacing: -2px;
+    line-height: 1;
+    margin: 0;
+    transform: skew(-5deg);
+    display: inline-block;
+    width: fit-content;
+}
+
+.cart-hero__underline {
+    width: 180px;
+    height: 12px;
+    background-color: var(--color-black);
+    transform: translateX(0) translateY(0);
+    box-shadow: 4px 4px 0 0 var(--color-black);
+}
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 960px) {
+    .cart-hero {
+        padding: 2.25rem 1.5rem 2rem;
+    }
+
+    .cart-hero__title {
+        font-size: clamp(2.2rem, 10vw, 4rem);
+        letter-spacing: -1.5px;
+    }
+
+    .cart-hero__underline {
+        width: 140px;
+        height: 10px;
+    }
+}
+
+@media (max-width: 580px) {
+    .cart-hero {
+        padding: 1.75rem 1rem 1.5rem;
+    }
+
+    .cart-hero__text-wrap {
+        gap: 0.9rem;
+    }
+
+    .cart-hero__title {
+        font-size: clamp(1.8rem, 13vw, 2.8rem);
+        letter-spacing: -1px;
+    }
+
+    .cart-hero__underline {
+        width: 100px;
+        height: 8px;
+    }
+}

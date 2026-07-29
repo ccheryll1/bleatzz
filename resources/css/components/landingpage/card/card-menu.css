@@ -1,0 +1,296 @@
+/* ─── Card Menu — Reusable Component (Neobrutalist Style) — EXTRA COMPACT ─── */
+.menu-card {
+    background-color: var(--color-white);
+    background-image: radial-gradient(circle, rgba(0, 0, 0, 0.06) 1px, transparent 1px);
+    background-size: 12px 12px;
+    border: 2.5px solid var(--color-black);
+    border-radius: 0;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    box-shadow: 5px 5px 0 0 var(--color-black);
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.menu-card:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 7px 7px 0 0 var(--color-black);
+}
+
+.menu-card:active {
+    transform: translate(2px, 2px);
+    box-shadow: 2.5px 2.5px 0 0 var(--color-black);
+}
+
+/* Image wrap */
+.menu-card__img-wrap {
+    position: relative;
+    aspect-ratio: 4/3;
+    overflow: hidden;
+    background-color: #F0F4F8;
+    background-image: radial-gradient(circle, rgba(0, 0, 0, 0.05) 1px, transparent 1px);
+    background-size: 8px 8px;
+    padding: 0.5rem;
+    padding-bottom: 0.25rem;
+}
+
+.menu-card__img-wrap::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 2.5px;
+    background-color: var(--color-black);
+    z-index: 2;
+}
+
+.menu-card__img-container {
+    width: 100%;
+    height: 100%;
+    background-color: #000;
+    border: 2px solid var(--color-black);
+    overflow: hidden;
+    box-shadow: 2.5px 2.5px 0 0 rgba(0, 0, 0, 0.25);
+}
+
+.menu-card__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.menu-card:hover .menu-card__img {
+    transform: scale(1.05);
+}
+
+/* Category Badge — Top-Left */
+.menu-card__badge {
+    position: absolute;
+    top: 0.4rem;
+    left: 0.4rem;
+    background-color: var(--color-white);
+    color: var(--color-black);
+    font-size: 0.5rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 0.15rem 0.45rem;
+    border: 2px solid var(--color-black);
+    border-radius: 0;
+    z-index: 5;
+    max-width: calc(100% - 3.5rem);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    box-shadow: 2px 2px 0 0 var(--color-black);
+    font-family: "Courier New", monospace;
+}
+
+.menu-card__badge--accent {
+    background-color: var(--color-white);
+    color: var(--color-black);
+}
+
+/* Favorite / Heart Button — Top-Right */
+.menu-card__fav-btn {
+    position: absolute;
+    top: 0.4rem;
+    right: 0.4rem;
+    width: 1.75rem;
+    height: 1.75rem;
+    background-color: var(--color-white);
+    border: 2px solid var(--color-black);
+    box-shadow: 2px 2px 0 0 var(--color-black);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 5;
+    transition: transform 0.1s ease, box-shadow 0.1s ease, background-color 0.15s ease;
+    padding: 0;
+}
+
+.menu-card__fav-btn:hover {
+    background-color: #FFF0F0;
+}
+
+.menu-card__fav-btn:active {
+    transform: translate(2px, 2px);
+    box-shadow: 1px 1px 0 0 var(--color-black);
+}
+
+.menu-card__fav-btn svg {
+    width: 0.9rem;
+    height: 0.9rem;
+    stroke: var(--color-black);
+    stroke-width: 2.5;
+    fill: none;
+}
+
+.menu-card__fav-btn.is-active svg {
+    fill: var(--color-black);
+}
+
+/* Body content area */
+.menu-card__body {
+    padding: 0.65rem 0.65rem 0.35rem;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    background-image: radial-gradient(circle, rgba(0, 0, 0, 0.05) 1px, transparent 1px);
+    background-size: 8px 8px;
+}
+
+.menu-card__canteen {
+    font-size: 0.48rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--color-gray-600);
+    font-family: "Courier New", monospace;
+}
+
+/* Name + Price row */
+.menu-card__header-row {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 0.35rem;
+    flex-wrap: wrap;
+}
+
+.menu-card__name {
+    font-size: 0.9rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 0.2px;
+    color: var(--color-black);
+    line-height: 1.1;
+}
+
+.menu-card__price-row {
+    display: flex;
+    align-items: baseline;
+    gap: 0.25rem;
+}
+
+.menu-card__price {
+    font-size: 0.82rem;
+    font-weight: 900;
+    color: var(--color-black);
+    font-family: "Courier New", monospace;
+    letter-spacing: 1.2px;
+}
+
+.menu-card__price--old {
+    font-size: 0.58rem;
+    font-weight: 600;
+    color: var(--color-gray-400);
+    text-decoration: line-through;
+}
+
+.menu-card__desc {
+    font-size: 0.7rem;
+    color: var(--color-gray-800);
+    line-height: 1.45;
+    flex: 1;
+    font-weight: 500;
+}
+
+/* Footer / CTA Button */
+.menu-card__footer {
+    padding: 0.3rem 0.65rem 0.75rem;
+    background-image: radial-gradient(circle, rgba(0, 0, 0, 0.05) 1px, transparent 1px);
+    background-size: 8px 8px;
+    position: relative;
+    z-index: 2;
+}
+
+.menu-card__btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.3rem;
+    width: 100%;
+    text-align: center;
+    background-color: var(--color-teal-light, #3FFFD8);
+    color: var(--color-black);
+    font-size: 0.68rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    padding: 0.48rem 0.6rem;
+    border: 2px solid var(--color-black);
+    box-shadow: 2.5px 2.5px 0 0 var(--color-black);
+    text-decoration: none;
+    cursor: pointer;
+    pointer-events: auto;
+    position: relative;
+    z-index: 3;
+    transition: transform 0.1s ease, box-shadow 0.1s ease, background-color 0.15s ease;
+    font-family: "Courier New", monospace;
+    appearance: none;
+    -webkit-appearance: none;
+    outline: none;
+}
+
+.menu-card__btn * {
+    pointer-events: none;
+}
+
+.menu-card__btn:hover {
+    background-color: var(--color-teal, #00C9A7);
+}
+
+.menu-card__btn:active {
+    transform: translate(2px, 2px);
+    box-shadow: 1px 1px 0 0 var(--color-black);
+}
+
+.menu-card__btn-icon {
+    width: 0.9rem;
+    height: 0.9rem;
+    stroke: currentColor;
+    stroke-width: 2.2;
+    fill: none;
+}
+
+/* Featured modifier: NO VISUAL DIFFERENCE. SAMA PERSIS kaya card biasa. */
+.menu-card--featured {
+    border-color: var(--color-black);
+    box-shadow: 5px 5px 0 0 var(--color-black);
+}
+
+.menu-card--featured:hover {
+    box-shadow: 7px 7px 0 0 var(--color-black);
+}
+
+/* Responsive tweaks */
+@media (max-width: 640px) {
+    .menu-card {
+        box-shadow: 4px 4px 0 0 var(--color-black);
+    }
+
+    .menu-card__name {
+        font-size: 0.85rem;
+    }
+
+    .menu-card__price {
+        font-size: 0.75rem;
+    }
+
+    .menu-card__desc {
+        font-size: 0.65rem;
+    }
+
+    .menu-card__btn {
+        font-size: 0.62rem;
+        padding: 0.45rem 0.55rem;
+        letter-spacing: 1px;
+    }
+}

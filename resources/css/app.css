@@ -1,0 +1,91 @@
+/* ─── Bleatz base ─── */
+@import './base/color.css';
+
+/* ─── Auth pages ─── */
+@import './login/register.css';
+@import './login/login.css';
+@import './login/forgot-password.css';
+
+/* ─── Landing page layout ─── */
+@import './pages/landingpage/layout/navbar.css';
+@import './pages/landingpage/layout/footer.css';
+
+/* ─── Reusable card components ─── */
+@import './components/landingpage/card/card-canteen.css';
+@import './components/landingpage/card/card-menu.css';
+@import './components/landingpage/card/card-rating.css';
+
+/* ─── Reusable button components ─── */
+@import './components/landingpage/button/search.css';
+@import './components/landingpage/button/tabs.css';
+@import './components/landingpage/button/filter.css';
+
+/* ─── Landing page front sections ─── */
+@import './components/landingpage/front/hero-section.css';
+@import './components/landingpage/front/benefit-section.css';
+@import './components/landingpage/front/category-section.css';
+@import './components/landingpage/front/canteen-section.css';
+@import './components/landingpage/front/popular-section.css';
+@import './components/landingpage/front/review-section.css';
+
+/* ─── Landing page canteen sections ─── */
+@import './components/landingpage/canteen/hero-section.css';
+@import './components/landingpage/canteen/toolbar-section.css';
+@import './components/landingpage/canteen/canteen-grid-section.css';
+@import './components/landingpage/canteen/menu-grid-section.css';
+@import './components/landingpage/canteen/detail-hero.css';
+@import './components/landingpage/canteen/detail-toolbar.css';
+
+/* ─── Landing page menu sections ─── */
+@import './components/landingpage/menu/hero-section.css';
+@import './components/landingpage/menu/toolbar-section.css';
+
+/* ─── Landing page favorite sections ─── */
+@import './components/landingpage/favorite/hero-section.css';
+
+/* ─── Landing page cart sections ─── */
+@import './components/landingpage/cart/hero-section.css';
+@import './components/landingpage/cart/cart-section.css';
+@import './components/landingpage/card/card-cart.css';
+@import './components/landingpage/card/card-summary.css';
+
+/* ─── Landing page order sections ─── */
+@import './components/landingpage/order/hero-section.css';
+@import './components/landingpage/order/order-section.css';
+@import './components/landingpage/card/card-order.css';
+
+/* ─── Reusable pagination ─── */
+@import './components/landingpage/pagination/pagination.css';
+
+/* ─── Reusable modal components ─── */
+@import './components/landingpage/modal/modal-cart.css';
+/* @import './components/landingpage/modal/modal-order-confirmation.css'; */
+@import './components/landingpage/modal/modal-waitconfirmation.css';
+
+/* ─── Admin Dashboard Layout ─── */
+@import './pages/admin/layout/layout.css';
+@import './components/admin/layout/sidebar.css';
+@import './components/admin/layout/navbar.css';
+
+/* ─── Admin Dashboard Components ─── */
+@import './components/admin/card/card.css';
+@import './components/admin/button/button.css';
+@import './components/admin/table/table.css';
+@import './components/admin/form/form.css';
+@import './components/admin/pagination/pagination.css';
+
+
+/* ─── Tailwind (harus di atas biar custom CSS bisa override Preflight) ─── */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ─── Global scroll fix ─── */
+html,
+body {
+    overflow-x: hidden;
+    overflow-y: auto;
+    height: auto;
+    min-height: 100%;
+}
+

@@ -1,0 +1,240 @@
+/* ═══════════════════════════════════════
+   CARD RATING (Neobrutalist) — Sama pola kaya card-menu
+   ═══════════════════════════════════════ */
+
+.card-rating {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.1rem;
+    width: 100%;
+    position: relative;
+}
+
+/* ── Varian: Avatar di KANAN, bubble di KIRI (bergantian) ── */
+.card-rating--reverse {
+    flex-direction: row-reverse;
+}
+
+/* ─── Avatar / Initials Box ─── */
+.card-rating__avatar-box {
+    flex-shrink: 0;
+    width: 64px;
+    height: 64px;
+    border: 3px solid var(--color-black);
+    box-shadow: 5px 5px 0 0 var(--color-black);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Arial Black', 'Arial', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 900;
+    color: var(--color-black);
+    background-color: var(--color-white);
+    position: relative;
+    z-index: 2;
+}
+
+/* Varian GANJIL (index 0, 2): putih (default) */
+/* Varian GENAP (index 1, 3): cyan background (sesuai referensi B) */
+.card-rating--reverse .card-rating__avatar-box {
+    background-color: var(--color-teal-light, #3FFFD8);
+}
+
+/* ─── Bubble wrapper (contain triangle posisi absolut) ─── */
+.card-rating__bubble-wrap {
+    flex: 1;
+    position: relative;
+}
+
+/* ─── Bubble Utama ─── */
+.card-rating__bubble {
+    background-color: var(--color-white);
+    background-image: radial-gradient(circle, rgba(0, 0, 0, 0.05) 1px, transparent 1px);
+    background-size: 10px 10px;
+    border: 3px solid var(--color-black);
+    box-shadow: 6px 6px 0 0 var(--color-black);
+    padding: 1.15rem 1.35rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+    position: relative;
+}
+
+/* ─── Quote text ─── */
+.card-rating__quote {
+    margin: 0;
+    font-size: 0.98rem;
+    line-height: 1.7;
+    color: #0A4DA8;
+    font-style: italic;
+    font-weight: 500;
+}
+
+.card-rating__quote::before {
+    content: '\201C';
+    font-family: 'Georgia', serif;
+}
+
+.card-rating__quote::after {
+    content: '\201D';
+    font-family: 'Georgia', serif;
+}
+
+/* ─── Stars ─── */
+.card-rating__stars {
+    display: flex;
+    gap: 0.2rem;
+    align-items: center;
+}
+
+.card-rating__stars svg {
+    width: 1.05rem;
+    height: 1.05rem;
+}
+
+/* ─── Author line ─── */
+.card-rating__author {
+    margin: 0;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 0.72rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--color-teal-dark, #009E84);
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+    flex-wrap: wrap;
+}
+
+.card-rating__author-name {
+    font-weight: 900;
+    color: var(--color-teal, #00C9A7);
+}
+
+.card-rating__author-canteen {
+    font-weight: 700;
+    color: var(--color-teal-dark, #009E84);
+}
+
+.card-rating__author-dash {
+    color: var(--color-teal, #00C9A7);
+    font-weight: 900;
+}
+
+/* ─── Speech Triangle (bawah bubble) ─── */
+.card-rating__bubble::after {
+    content: '';
+    position: absolute;
+    bottom: -15px;
+    left: 24px;
+    width: 0;
+    height: 0;
+    border-left: 14px solid transparent;
+    border-right: 14px solid transparent;
+    border-top: 15px solid var(--color-black);
+    z-index: 1;
+}
+
+.card-rating__bubble::before {
+    content: '';
+    position: absolute;
+    bottom: -10.5px;
+    left: 26.5px;
+    width: 0;
+    height: 0;
+    border-left: 10.5px solid transparent;
+    border-right: 10.5px solid transparent;
+    border-top: 12px solid var(--color-white);
+    z-index: 2;
+}
+
+/* Reverse: triangle pindah ke KANAN bawah bubble */
+.card-rating--reverse .card-rating__bubble::after {
+    left: auto;
+    right: 24px;
+}
+
+.card-rating--reverse .card-rating__bubble::before {
+    left: auto;
+    right: 26.5px;
+}
+
+/* ─── RESPONSIVE TABLET ─── */
+@media (max-width: 900px) {
+    .card-rating {
+        gap: 0.85rem;
+    }
+
+    .card-rating__avatar-box {
+        width: 54px;
+        height: 54px;
+        font-size: 1.25rem;
+        box-shadow: 4px 4px 0 0 var(--color-black);
+    }
+
+    .card-rating__bubble {
+        padding: 0.95rem 1.1rem;
+        box-shadow: 5px 5px 0 0 var(--color-black);
+        gap: 0.7rem;
+    }
+
+    .card-rating__quote {
+        font-size: 0.88rem;
+        line-height: 1.65;
+    }
+}
+
+/* ─── RESPONSIVE MOBILE ─── */
+@media (max-width: 600px) {
+    .card-rating,
+    .card-rating--reverse {
+        flex-direction: column;
+        gap: 0.75rem;
+    }
+
+    /* Mobile: bubble selalu di bawah avatar, avatar kiri, triangle di tengah */
+    .card-rating__bubble::after {
+        bottom: -14px;
+        left: 30px;
+        right: auto;
+    }
+
+    .card-rating__bubble::before {
+        bottom: -10px;
+        left: 32.5px;
+        right: auto;
+    }
+
+    .card-rating--reverse .card-rating__avatar-box {
+        background-color: var(--color-teal-light, #3FFFD8);
+    }
+
+    .card-rating__bubble {
+        padding: 0.85rem 1rem;
+        box-shadow: 4px 4px 0 0 var(--color-black);
+    }
+
+    .card-rating__avatar-box {
+        width: 48px;
+        height: 48px;
+        font-size: 1.1rem;
+        box-shadow: 3px 3px 0 0 var(--color-black);
+        border-width: 2.5px;
+    }
+
+    .card-rating__quote {
+        font-size: 0.82rem;
+        line-height: 1.6;
+    }
+
+    .card-rating__stars svg {
+        width: 0.95rem;
+        height: 0.95rem;
+    }
+
+    .card-rating__author {
+        font-size: 0.65rem;
+        letter-spacing: 1.2px;
+    }
+}

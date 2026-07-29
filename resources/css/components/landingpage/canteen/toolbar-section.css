@@ -1,0 +1,59 @@
+/* ═══════════════════════════════════════
+   TOOLBAR SECTION (Search + Tabs)
+   ═══════════════════════════════════════ */
+
+.toolbar-section {
+    width: 100%;
+    background-color: var(--color-gray-100);
+    border-top: 3px solid var(--color-black);
+    border-bottom: 3px solid var(--color-black);
+    padding: 2rem 2rem;
+}
+
+.toolbar-section__inner {
+    max-width: 1280px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.toolbar-section__search {
+    flex: 1;
+    min-width: 280px;
+    max-width: 820px;
+}
+
+.toolbar-section__tabs {
+    flex-shrink: 0;
+}
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 960px) {
+    .toolbar-section__inner {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 1rem;
+    }
+
+    .toolbar-section__search {
+        max-width: 100%;
+    }
+
+    .toolbar-section__tabs {
+        display: flex;
+        justify-content: flex-start;
+    }
+}
+
+@media (max-width: 580px) {
+    .toolbar-section {
+        padding: 1.5rem 1rem;
+    }
+
+    .toolbar-section__tabs {
+        justify-content: center;
+    }
+}
