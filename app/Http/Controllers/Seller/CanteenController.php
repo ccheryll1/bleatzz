@@ -80,15 +80,15 @@ class CanteenController extends Controller
     {
         $this->authorizeCanteen($canteen);
 
-        $request->validate([
+        $validated = $request->validate([
             'schedules'                  => ['required', 'array', 'size:7'],
             'schedules.*.day_of_week'    => ['required', 'integer', 'min:0', 'max:6'],
             'schedules.*.is_closed'      => ['nullable', 'boolean'],
-            'schedules.*.open_time'      => ['required_unless:schedules.*.is_closed,1', 'nullable', 'date_format:H:i'],
-            'schedules.*.close_time'     => ['required_unless:schedules.*.is_closed,1', 'nullable', 'date_format:H:i', 'after:schedules.*.open_time'],
+            'schedules.*.open_time'      => ['required_unless:schedules.*.is_closed,1', 'prohibits:schedules.*.is_closed', 'nullable', 'date_format:H:i'],
+            'schedules.*.close_time'     => ['required_unless:schedules.*.is_closed,1', 'prohibits:schedules.*.is_closed', 'nullable', 'date_format:H:i', 'after:schedules.*.open_time'],
         ]);
 
-        foreach ($request->schedules as $schedule) {
+        foreach ($validated['schedules'] as $schedule) {
             $isClosed = !empty($schedule['is_closed']);
             Schedule::updateOrCreate(
                 [

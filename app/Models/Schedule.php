@@ -47,6 +47,10 @@ class Schedule extends Model
             return false;
         }
 
+        if (empty($this->open_time) || empty($this->close_time)) {
+            return false;
+        }
+
         $now = now()->format('H:i:s');
 
         return $now >= $this->open_time && $now <= $this->close_time;

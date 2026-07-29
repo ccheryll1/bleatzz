@@ -115,41 +115,72 @@
                     <h3 class="admin-card-title" style="margin: 0;">Jadwal Operasional</h3>
                 </div>
                 <div class="admin-card-body">
-                    <form method="POST" action="{{ route('seller.canteens.schedule.update', $canteen) }}">
+                    <form id="scheduleForm" method="POST" action="{{ route('seller.canteens.schedule.update', $canteen) }}">
                         @csrf
 
+                        <div style="margin-bottom: 16px; padding: 12px; border: 2.5px solid #000; background: #e0f7fa; box-shadow: 4px 4px 0 #000;">
+                            <div style="font-size: 12px; font-weight: 700; margin-bottom: 8px; font-family: 'Courier New', monospace;">⚡ TERAPKAN KE SENIN-SABTU</div>
+                            <div style="display: flex; gap: 6px; margin-bottom: 8px;">
+                                <input 
+                                    id="bulk_open" 
+                                    type="time" 
+                                    style="flex: 1; padding: 4px; font-size: 11px; border: 2px solid #000;"
+                                />
+                                <input 
+                                    id="bulk_close" 
+                                    type="time" 
+                                    style="flex: 1; padding: 4px; font-size: 11px; border: 2px solid #000;"
+                                />
+                            </div>
+                            <button 
+                                type="button" 
+                                id="bulkApplyBtn"
+                                style="width: 100%; padding: 6px; font-size: 11px; font-weight: 700; background: #00bcd4; color: #000; border: 2px solid #000; box-shadow: 3px 3px 0 #000; cursor: pointer;"
+                            >
+                                ⇩ SALIN KE SENIN - SABTU
+                            </button>
+                        </div>
+
                         <div style="display: flex; flex-direction: column; gap: 12px;">
-                            @foreach($schedules as $schedule)
-                                <div style="padding: 8px 0; border-bottom: 1px dashed var(--color-gray-300);">
+                            @foreach($schedules as $idx => $schedule)
+                                @php
+                                    $dow = $schedule->day_of_week ?? $idx;
+                                    $isClosed = old('schedules.'.$idx.'.is_closed', $schedule->is_closed);
+                                    $openVal = old('schedules.'.$idx.'.open_time', $schedule->open_time ? substr($schedule->open_time, 0, 5) : '');
+                                    $closeVal = old('schedules.'.$idx.'.close_time', $schedule->close_time ? substr($schedule->close_time, 0, 5) : '');
+                                @endphp
+                                <div class="schedule-row" data-day="{{ $dow }}" style="padding: 8px 0; border-bottom: 1px dashed var(--color-gray-300);">
+                                    <input type="hidden" name="schedules[{{ $idx }}][day_of_week]" value="{{ $dow }}" />
+
                                     <div style="display: flex; align-items: center; gap: 8px; font-size: 12px;">
                                         <label style="display: flex; align-items: center; gap: 6px; flex: 1;">
                                             <input 
+                                                class="schedule-closed"
                                                 type="checkbox" 
-                                                name="schedules[{{ $loop->index }}][is_closed]" 
+                                                name="schedules[{{ $idx }}][is_closed]" 
                                                 value="1"
-                                                {{ $schedule->is_closed ? 'checked' : '' }}
+                                                {{ $isClosed ? 'checked' : '' }}
                                             />
-                                            <span style="font-weight: 600;">{{ $days[$schedule->day_of_week] }}</span>
+                                            <span style="font-weight: 600;">{{ $days[$dow] }}</span>
                                         </label>
                                     </div>
 
-                                    @if(!$schedule->is_closed)
-                                        <div style="display: flex; gap: 6px; margin-top: 6px;">
-                                            <input type="hidden" name="schedules[{{ $loop->index }}][day_of_week]" value="{{ $schedule->day_of_week }}" />
-                                            <input 
-                                                type="time" 
-                                                name="schedules[{{ $loop->index }}][open_time]" 
-                                                value="{{ $schedule->open_time }}"
-                                                style="flex: 1; padding: 4px; font-size: 11px; border: 1px solid var(--color-gray-300);"
-                                            />
-                                            <input 
-                                                type="time" 
-                                                name="schedules[{{ $loop->index }}][close_time]" 
-                                                value="{{ $schedule->close_time }}"
-                                                style="flex: 1; padding: 4px; font-size: 11px; border: 1px solid var(--color-gray-300);"
-                                            />
-                                        </div>
-                                    @endif
+                                    <div class="schedule-times" style="display: {{ $isClosed ? 'none' : 'flex' }}; gap: 6px; margin-top: 6px;">
+                                        <input 
+                                            class="schedule-open"
+                                            type="time" 
+                                            name="schedules[{{ $idx }}][open_time]" 
+                                            value="{{ $openVal }}"
+                                            style="flex: 1; padding: 4px; font-size: 11px; border: 1px solid var(--color-gray-300);"
+                                        />
+                                        <input 
+                                            class="schedule-close"
+                                            type="time" 
+                                            name="schedules[{{ $idx }}][close_time]" 
+                                            value="{{ $closeVal }}"
+                                            style="flex: 1; padding: 4px; font-size: 11px; border: 1px solid var(--color-gray-300);"
+                                        />
+                                    </div>
                                 </div>
                             @endforeach
                         </div>
@@ -160,6 +191,61 @@
                     </form>
                 </div>
             </div>
+
+            <script>
+            (function () {
+                var rows = document.querySelectorAll('.schedule-row');
+
+                rows.forEach(function (row) {
+                    var closedChk = row.querySelector('.schedule-closed');
+                    var timesWrap = row.querySelector('.schedule-times');
+                    var openInp = row.querySelector('.schedule-open');
+                    var closeInp = row.querySelector('.schedule-close');
+
+                    closedChk.addEventListener('change', function () {
+                        if (closedChk.checked) {
+                            timesWrap.style.display = 'none';
+                            openInp.value = '';
+                            closeInp.value = '';
+                        } else {
+                            timesWrap.style.display = 'flex';
+                        }
+                    });
+                });
+
+                var bulkBtn = document.getElementById('bulkApplyBtn');
+                if (bulkBtn) {
+                    bulkBtn.addEventListener('click', function () {
+                        var bulkOpen = document.getElementById('bulk_open').value;
+                        var bulkClose = document.getElementById('bulk_close').value;
+
+                        if (!bulkOpen || !bulkClose) {
+                            alert('Isi kedua kolom jam terlebih dahulu!');
+                            return;
+                        }
+                        if (bulkOpen >= bulkClose) {
+                            alert('Jam tutup harus lebih besar dari jam buka!');
+                            return;
+                        }
+
+                        rows.forEach(function (row) {
+                            var day = parseInt(row.getAttribute('data-day'), 10);
+                            if (day >= 1 && day <= 6) {
+                                var closedChk = row.querySelector('.schedule-closed');
+                                var timesWrap = row.querySelector('.schedule-times');
+                                var openInp = row.querySelector('.schedule-open');
+                                var closeInp = row.querySelector('.schedule-close');
+
+                                closedChk.checked = false;
+                                timesWrap.style.display = 'flex';
+                                openInp.value = bulkOpen;
+                                closeInp.value = bulkClose;
+                            }
+                        });
+                    });
+                }
+            })();
+            </script>
         </div>
     </div>
 </x-admin-layout>
